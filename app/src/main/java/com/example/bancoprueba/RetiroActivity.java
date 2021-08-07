@@ -23,10 +23,6 @@ public class RetiroActivity extends AppCompatActivity {
     TextInputEditText pinRetiroConfirm;
     Button retirarDinero;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +52,7 @@ public class RetiroActivity extends AppCompatActivity {
 
                 if(datos.validateUserBank(userBank)){
                     datos.updateUser(id,contentValues);
-                    Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RetiroActivity.this, "Se han realizo el retiro", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(RetiroActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
@@ -67,15 +63,10 @@ public class RetiroActivity extends AppCompatActivity {
 
 
                 } else {
-
-                    pinRetiroConfirm.setError("pin no coincide");
+                    pinRetiroConfirm.setError("Pin no coincide");
                 }
             }
-
-
         });
-
-
     }
 
 
