@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.example.SQLConstants;
 
-public class UserDataBase {
+import java.io.Serializable;
+
+public class UserDataBase implements Serializable {
 
     private String id;
     private String name;
@@ -12,6 +14,7 @@ public class UserDataBase {
     private String password;
     private String phone;
     private int saldo=1000000;
+
 
     public UserDataBase(String id, String name, String email, String password, String phone){
         this.id = id;
@@ -23,8 +26,8 @@ public class UserDataBase {
     }
 
     public UserDataBase() {
-
     }
+
 
     public String getId() {
         return id;

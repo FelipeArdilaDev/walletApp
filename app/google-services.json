@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "883645869421",
+    "project_id": "banco-prueba-1ba32",
+    "storage_bucket": "banco-prueba-1ba32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883645869421:android:a28d441609606219717e64",
+        "android_client_info": {
+          "package_name": "com.example.bancoprueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883645869421-9ah5keqoq8mmb9u89qs5h5p0r0p4empq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKlHBYAGtFHz6Zh5oL-Qp-EGuv9_AdetU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883645869421-9ah5keqoq8mmb9u89qs5h5p0r0p4empq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

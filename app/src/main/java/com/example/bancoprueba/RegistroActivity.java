@@ -59,7 +59,7 @@ public class RegistroActivity extends AppCompatActivity {
                 data.open();
                 data.insertUsuario(usuario);
                 Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
-                //data.close();
+                data.close();
 
                 if (validatePassword(password)){
                     Toast.makeText(RegistroActivity.this, "Contraseña valida", Toast.LENGTH_SHORT).show();

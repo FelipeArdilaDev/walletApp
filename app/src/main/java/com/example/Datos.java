@@ -3,6 +3,7 @@ package com.example;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -19,9 +20,9 @@ public class Datos {
                     ".{4,20}" +
                     "$");
 
-    private Context context;
-    private SQLiteDatabase sqLiteDatabase;
-    private SQLiteOpenHelper sqLiteOpenHelper;
+    public Context context;
+    public SQLiteDatabase sqLiteDatabase;
+    public SQLiteOpenHelper sqLiteOpenHelper;
 
 
 
@@ -54,14 +55,14 @@ public class Datos {
     }
 
 
-
-    public boolean validateUser(UserDataBase userDataBase) {
-        SQLiteDatabase sqLiteDatabase = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + "='" + userDataBase.getEmail() + "';";
+   public boolean validateUser(UserDataBase userDataBase) {
+        sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
+        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL +
+                " ='" + SQLConstants.COLUMN_EMAIL + "';";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         try {
             if (cursor.getCount() !=0) {
-                while (cursor.moveToNext()) {
+                while (cursor.moveToFirst()) {
                     String user = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL));
                     String pass = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD));
                     if (userDataBase.getEmail().equals(user) && (userDataBase.getPassword().equals(pass))) {

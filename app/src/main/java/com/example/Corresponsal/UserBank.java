@@ -4,7 +4,9 @@ import android.content.ContentValues;
 
 import com.example.SQLConstants;
 
-public class UserBank {
+import java.io.Serializable;
+
+public class UserBank implements Serializable {
 
     private String id;
     private int saldo;
