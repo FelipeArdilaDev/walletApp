@@ -25,56 +25,32 @@ public class Datos {
     public SQLiteOpenHelper sqLiteOpenHelper;
 
 
-
-    public Datos(Context context){
-        this.context =  context;
+    public Datos(Context context) {
+        this.context = context;
         sqLiteOpenHelper = new DBHelper(context);
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
 
     }
 
-    public void open(){
+    public void open() {
         sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
     }
 
-    public void close(){
+    public void close() {
         sqLiteOpenHelper.close();
 
     }
 
-    public void insertUsuario(UserDataBase usuario){
+    public void insertUsuario(UserDataBase usuario) {
         ContentValues values = usuario.toValues();
-        sqLiteDatabase.insert(SQLConstants.TABLE_USUARIOS,null,values);
+        sqLiteDatabase.insert(SQLConstants.TABLE_USUARIOS, null, values);
 
 
     }
 
-    public void inserUsuarioBank(UserBank userBank){
+    public void inserUsuarioBank(UserBank userBank) {
         ContentValues values = userBank.toValues();
-        sqLiteDatabase.insert(SQLConstants.USUARIOS_BANK,null,values);
-    }
-
-
-   public boolean validateUser(UserDataBase userDataBase) {
-        sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
-        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL +
-                " ='" + SQLConstants.COLUMN_EMAIL + "';";
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
-        try {
-            if (cursor.getCount() !=0) {
-                while (cursor.moveToFirst()) {
-                    String user = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL));
-                    String pass = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD));
-                    if (userDataBase.getEmail().equals(user) && (userDataBase.getPassword().equals(pass))) {
-                        return true;
-                    }
-                }
-            }
-        }catch (Exception ex){
-            ex.toString();
-            return false;
-        }
-        return false;
+        sqLiteDatabase.insert(SQLConstants.USUARIOS_BANK, null, values);
     }
 
     public UserDataBase mostrarDatos(String email) {
@@ -130,10 +106,32 @@ public class Datos {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
+    public boolean validateUser(UserDataBase userDataBase) {
+        SQLiteDatabase myDB = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL +
+                " ='" + SQLConstants.TABLE_USUARIOS + "';";
+        Cursor cursor = myDB.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    String user = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL));
+                    String pass = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD));
+                    if (userDataBase.getEmail().equals(user) && (userDataBase.getPassword().equals(pass))) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
     public boolean validateUserBank(UserBank userBank) {
-        SQLiteDatabase sqLiteDatabase = this.sqLiteOpenHelper.getReadableDatabase();
+        SQLiteDatabase myDB = this.sqLiteOpenHelper.getReadableDatabase();
         String query = " SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " ='" + userBank.getId() + "';";
-        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        Cursor cursor = myDB.rawQuery(query,null);
         try {
             if (cursor.getCount() !=0) {
                 while (cursor.moveToNext()) {
@@ -168,6 +166,8 @@ public class Datos {
         }
 
     }
+
+
 
 
 

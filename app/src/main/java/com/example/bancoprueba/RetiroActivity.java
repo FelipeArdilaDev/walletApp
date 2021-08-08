@@ -45,10 +45,12 @@ public class RetiroActivity extends AppCompatActivity {
                 datos.open();
 
                 UserBank userBank = new UserBank();
+
                 pinRetiro = findViewById(R.id.pinRetiro);
                 String pin = pinRetiro.getText().toString();
                 pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
                 String pinConfirm = pinRetiroConfirm.getText().toString();
+
                 datos.updateUser(id,contentValues);
                 Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
 
@@ -62,7 +64,6 @@ public class RetiroActivity extends AppCompatActivity {
 
 
                 } else {
-
                     pinRetiroConfirm.setError("pin no coincide");
                 }
             }

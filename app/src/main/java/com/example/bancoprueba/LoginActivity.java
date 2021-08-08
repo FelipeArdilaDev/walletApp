@@ -1,5 +1,6 @@
 package com.example.bancoprueba;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,9 +16,13 @@ import android.widget.Toast;
 import com.example.Corresponsal.UserBank;
 import com.example.Corresponsal.UserDataBase;
 import com.example.Datos;
+import com.example.Helpers.DBHelper;
 import com.example.SQLConstants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.BreakIterator;
@@ -28,8 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText tiEmailAddress;
     TextInputEditText tiPasswordLogin;
     Button btnIniciarSecion;
-    UserDataBase userDataBase;
-    Datos datos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
         btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
-
-
-
     }
 
 
@@ -61,12 +62,10 @@ public class LoginActivity extends AppCompatActivity {
         tiEmailAddress = findViewById(R.id.tiEmailAddress);
         String email = tiEmailAddress.getText().toString();
         tiPasswordLogin = findViewById(R.id.tiPasswordLogin);
+
         Datos datos = new Datos(this);
         UserDataBase userDataBase = new UserDataBase();
         datos.open();
-
-
-
 
         if (Datos.checkEmail(email)){
             Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
@@ -76,7 +75,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (datos.validatePassword(tiPasswordLogin)){
-            Toast.makeText(this, "Contraseña valida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Contraseña segura", Toast.LENGTH_SHORT).show();
+
+
         } else {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);
+
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
