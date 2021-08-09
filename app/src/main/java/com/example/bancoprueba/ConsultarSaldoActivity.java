@@ -3,7 +3,6 @@ package com.example.bancoprueba;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
 
         userBank = new UserBank();
         tvMostrarSaldo = findViewById(R.id.tvMostrarSaldo);
-        buscar = findViewById(R.id.buscar);
+        buscar = findViewById(R.id.tiCOnsulta);
         consultar = findViewById(R.id.consultar);
         consultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,8 +39,6 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
                 userBank = datos.getUser(idbuscar);
                 tvMostrarSaldo.setText(String.valueOf("saldo: " + userBank.getSaldo()));
                 Toast.makeText(ConsultarSaldoActivity.this, "Se encontro el usuario", Toast.LENGTH_SHORT).show();
-
-
             }
         });
 

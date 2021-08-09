@@ -182,7 +182,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/transferenciasCard"
+                android:id="@+id/deporitoCard"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_marginStart="25dp"
@@ -191,6 +191,7 @@
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
+                android:onClick="depositarDinero"
                 app:cardBackgroundColor="#1D0B47"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.example.Corresponsal.UserBank;
 import com.example.Corresponsal.UserDataBase;
 import com.example.Datos;
-import com.example.SQLConstants;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterNewBankActivity extends AppCompatActivity {
@@ -47,6 +46,8 @@ public class RegisterNewBankActivity extends AppCompatActivity {
                 passwordConfirm = findViewById(R.id.tiPinConfirm);
                 String pinConfirm = passwordConfirm.getText().toString();
 
+
+
                 UserBank usuariosBank = new UserBank(
                         id.getText().toString(),
                         Integer.valueOf(saldoInicial.getText().toString()),
@@ -58,7 +59,8 @@ public class RegisterNewBankActivity extends AppCompatActivity {
                 if(pin.equals(pinConfirm)) {
                     data = new Datos(getApplicationContext());
                     data.open();
-                    data.inserUsuarioBank(usuariosBank);
+                    data.insertUsuarioBank(usuariosBank);
+
                     Toast.makeText(RegisterNewBankActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
                     Toast.makeText(RegisterNewBankActivity.this, "El pin coincide correctamente", Toast.LENGTH_SHORT).show();
                     finish();

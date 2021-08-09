@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
-        <activity android:name=".ConsultarSaldoActivity"></activity>
+        <activity android:name=".DepositoActivity"></activity>
+        <activity android:name=".ConsultarSaldoActivity" />
         <activity android:name=".RetiroActivity" />
         <activity android:name=".RegisterNewBankActivity" />
         <activity android:name=".MenuActivity" />

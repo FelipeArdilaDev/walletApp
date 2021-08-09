@@ -25,6 +25,8 @@ public class RetiroActivity extends AppCompatActivity {
     Button retirarDinero;
     DBHelper dbHelper;
     UserBank userBank;
+    Datos datos;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +34,13 @@ public class RetiroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_retiro);
         getSupportActionBar().hide();
 
+
         timontoRetiro = findViewById(R.id.timontoRetiro);
         numberDocument = findViewById(R.id.numberDocument);
         dbHelper = new DBHelper(this);
         userBank = new UserBank();
+        datos = new Datos(this);
+
 
 
         retirarDinero = findViewById(R.id.retirarDinero);
@@ -46,7 +51,8 @@ public class RetiroActivity extends AppCompatActivity {
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(SQLConstants.COLUMN_BANK_SALDO,
                         timontoRetiro.getText().toString());
-                Datos datos = new Datos(getApplicationContext());
+
+                pinRetiro = findViewById(R.id.pinRetiro);
                 datos.open();
 
                 pinRetiro = findViewById(R.id.pinRetiro);
@@ -56,10 +62,10 @@ public class RetiroActivity extends AppCompatActivity {
                 String pinConfirm = pinRetiroConfirm.getText().toString();
                 String document = numberDocument.getText().toString();
                 String retiro = timontoRetiro.getText().toString();
+
                 int montoRetiro;
                 montoRetiro = Integer.parseInt(retiro);
                 int nuevoSaldo;
-                userBank = new UserBank();
                 int saldo = userBank.getSaldo();
 
                 if(dbHelper.validateUserBank(document,pin)){
@@ -68,6 +74,7 @@ public class RetiroActivity extends AppCompatActivity {
                     Toast.makeText(RetiroActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
                 }
 
+
                 if (pin.equals(pinConfirm)){
                     Toast.makeText(RetiroActivity.this, "El pin Coincide", Toast.LENGTH_SHORT).show();
                 } else {
@@ -75,11 +82,11 @@ public class RetiroActivity extends AppCompatActivity {
                 }
 
                 if ( saldo > montoRetiro){
-                    nuevoSaldo = montoRetiro - saldo;
+                    nuevoSaldo = saldo-montoRetiro;
                     userBank.setSaldo(nuevoSaldo);
 
                     datos.open();
-                    datos.updateUserBank(id,contentValues);
+                    datos.updateUserBank(userBank);
                     Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
 
 

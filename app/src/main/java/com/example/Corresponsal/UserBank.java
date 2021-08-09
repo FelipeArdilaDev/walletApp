@@ -69,6 +69,14 @@ public class UserBank implements Serializable {
         return contentValues;
     }
 
+    public ContentValues values(){
+        ContentValues contentValues = new ContentValues(1);
+        contentValues.put(SQLConstants.COLUMN_BANK_SALDO,saldo-2000);
+
+        return contentValues;
+
+    }
+
 
 
 }

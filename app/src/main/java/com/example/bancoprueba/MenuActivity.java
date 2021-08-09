@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class MenuActivity extends AppCompatActivity {
 
     TextView tvSaldo;
+    TextView tvName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,17 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
-        String newemail;
+        String email;
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
-                newemail = null;
+                email = null;
 
             } else {
-                newemail = extras.getString("email");
+                email = extras.getString("email");
             }
         } else {
-            newemail = (String) savedInstanceState.getSerializable("email");
+            email = (String) savedInstanceState.getSerializable("email");
         }
 
 
@@ -42,8 +43,10 @@ public class MenuActivity extends AppCompatActivity {
         tvSaldo = findViewById(R.id.tvSaldo);
 
        Datos datos = new Datos(this);
-       UserDataBase userDataBase = datos.mostrarDatos(newemail);
+       UserDataBase userDataBase = datos.mostrarDatos(email);
        tvSaldo.setText(String.valueOf("saldo: " + userDataBase.getSaldo()));
+
+
 
     }
 
@@ -61,6 +64,12 @@ public class MenuActivity extends AppCompatActivity {
     public void consultaDeSaldo(View v){
         Intent intent = new Intent(this,ConsultarSaldoActivity.class);
         startActivity(intent);
+    }
+
+    public void depositarDinero(View v){
+        Intent intent = new Intent(this, DepositoActivity.class);
+        startActivity(intent);
+
     }
 
 

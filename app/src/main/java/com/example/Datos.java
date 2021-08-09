@@ -51,7 +51,7 @@ public class Datos {
 
     }
 
-    public void inserUsuarioBank(UserBank userBank) {
+    public void insertUsuarioBank(UserBank userBank) {
         ContentValues values = userBank.toValues();
         sqLiteDatabase.insert(SQLConstants.USUARIOS_BANK, null, values);
     }
@@ -60,13 +60,14 @@ public class Datos {
 
         UserDataBase userDataBase1 = new UserDataBase();
         SQLiteDatabase sqLiteDatabase = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + " = '" + SQLConstants.TABLE_USUARIOS + "';";
+        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + "='" + SQLConstants.TABLE_USUARIOS + "';";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
 
             if (cursor.getCount() !=0) {
                 while (cursor.moveToNext()) {
 
                     userDataBase1.setSaldo(Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_SALDO))));
+
                     return  userDataBase1;
 
                 }
@@ -85,7 +86,7 @@ public class Datos {
                 whereArgs,
                 null,null,null);
 
-            if (cursor.getCount() == 1){
+        if (cursor.getCount() == 1){
             cursor.moveToFirst();
             userBank.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID)));
             userBank.setNumberCount(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_NUMBER_COUNT)));
@@ -98,16 +99,9 @@ public class Datos {
 
     }
 
-    public void updateUserBank(String id,ContentValues contentValues){
-        String[] whereArgs = new String[] {String.valueOf(id)};
+    public void updateUserBank(UserBank userBank){
         sqLiteDatabase.update(SQLConstants.USUARIOS_BANK,
-                contentValues,SQLConstants.SEARCH_BY_ID,whereArgs);
-
-
-
-
-
-
+                userBank.values(),SQLConstants.SEARCH_BY_ID,null);
 
     }
 

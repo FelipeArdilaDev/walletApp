@@ -67,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         String password = tiPasswordLogin.getText().toString();
 
         Datos datos = new Datos(this);
-        UserDataBase userDataBase = new UserDataBase();
         datos.open();
 
         if (Datos.checkEmail(email)){
