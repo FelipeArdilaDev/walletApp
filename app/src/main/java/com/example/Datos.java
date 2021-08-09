@@ -12,9 +12,11 @@ import com.example.Corresponsal.UserDataBase;
 import com.example.Helpers.DBHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 public class Datos {
+    private ContentValues values;
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     ".{4,20}" +
@@ -23,6 +25,7 @@ public class Datos {
     public Context context;
     public SQLiteDatabase sqLiteDatabase;
     public SQLiteOpenHelper sqLiteOpenHelper;
+    private ContentValues contentValues;
 
 
     public Datos(Context context) {
@@ -95,10 +98,16 @@ public class Datos {
 
     }
 
-    public void updateUser(String id,ContentValues contentValues){
+    public void updateUserBank(String id,ContentValues contentValues){
         String[] whereArgs = new String[] {String.valueOf(id)};
         sqLiteDatabase.update(SQLConstants.USUARIOS_BANK,
                 contentValues,SQLConstants.SEARCH_BY_ID,whereArgs);
+
+
+
+
+
+
 
     }
 
@@ -106,48 +115,6 @@ public class Datos {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public boolean validateUser(UserDataBase userDataBase) {
-        SQLiteDatabase myDB = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL +
-                " ='" + SQLConstants.TABLE_USUARIOS + "';";
-        Cursor cursor = myDB.rawQuery(query, null);
-        try {
-            if (cursor.getCount() != 0) {
-                while (cursor.moveToNext()) {
-                    String user = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL));
-                    String pass = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD));
-                    if (userDataBase.getEmail().equals(user) && (userDataBase.getPassword().equals(pass))) {
-                        return true;
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            ex.toString();
-            return false;
-        }
-        return false;
-    }
-
-    public boolean validateUserBank(UserBank userBank) {
-        SQLiteDatabase myDB = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = " SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " ='" + userBank.getId() + "';";
-        Cursor cursor = myDB.rawQuery(query,null);
-        try {
-            if (cursor.getCount() !=0) {
-                while (cursor.moveToNext()) {
-                    String user = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID));
-                    String pass = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD));
-                    if (userBank.getId().equals(user) && (userBank.getPassword().equals(pass))) {
-                        return true;
-                    }
-                }
-            }
-        }catch (Exception ex){
-            ex.toString();
-            return false;
-        }
-        return false;
-    }
 
     public boolean validatePassword(TextInputEditText passwordRegister) {
         String passwordInput = passwordRegister.getText().toString().trim();
@@ -156,8 +123,6 @@ public class Datos {
             passwordRegister.setError("El campo no puede estar vacío");
             return false;
         }
-
-
         else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
             passwordRegister.setError("La contraseña es demasiado débil");
             return false;
@@ -166,11 +131,6 @@ public class Datos {
         }
 
     }
-
-
-
-
-
 
 }
 

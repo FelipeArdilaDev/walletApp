@@ -32,6 +32,41 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean validateUser(String email , String password) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        String [] column = { SQLConstants.COLUMN_ID };
+        String selection = SQLConstants.COLUMN_EMAIL + "=?" + " and " + SQLConstants.COLUMN_PASSWORD + "=?";
+        String [] selectionArgs = {email,password};
+        Cursor cursor = myDB.query(SQLConstants.TABLE_USUARIOS,column,selection,selectionArgs,
+                null,null,null);
+        int count = cursor.getCount();
+        myDB.close();
+        cursor.close();
+        if(count >0)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validateUserBank(String email , String password) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        String [] column = { SQLConstants.COLUMN_BANK_ID };
+        String selection = SQLConstants.COLUMN_BANK_ID + "=?" + " and " + SQLConstants.COLUMN_BANK_PASSWORD + "=?";
+        String [] selectionArgs = {email,password};
+        Cursor cursor = myDB.query(SQLConstants.USUARIOS_BANK,column,selection,selectionArgs,
+                null,null,null);
+        int count = cursor.getCount();
+        myDB.close();
+        cursor.close();
+        if(count >0)
+            return true;
+        else
+            return false;
+    }
+
+
+
+
 
 
 }

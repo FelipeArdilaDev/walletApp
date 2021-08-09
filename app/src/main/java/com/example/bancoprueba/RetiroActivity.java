@@ -3,6 +3,7 @@ package com.example.bancoprueba;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,8 @@ public class RetiroActivity extends AppCompatActivity {
     TextInputEditText pinRetiro;
     TextInputEditText pinRetiroConfirm;
     Button retirarDinero;
+    DBHelper dbHelper;
+    UserBank userBank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class RetiroActivity extends AppCompatActivity {
 
         timontoRetiro = findViewById(R.id.timontoRetiro);
         numberDocument = findViewById(R.id.numberDocument);
+        dbHelper = new DBHelper(this);
+        userBank = new UserBank();
 
 
         retirarDinero = findViewById(R.id.retirarDinero);
@@ -44,27 +49,42 @@ public class RetiroActivity extends AppCompatActivity {
                 Datos datos = new Datos(getApplicationContext());
                 datos.open();
 
-                UserBank userBank = new UserBank();
-
                 pinRetiro = findViewById(R.id.pinRetiro);
                 String pin = pinRetiro.getText().toString();
                 pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
+
                 String pinConfirm = pinRetiroConfirm.getText().toString();
+                String document = numberDocument.getText().toString();
+                String retiro = timontoRetiro.getText().toString();
+                int montoRetiro;
+                montoRetiro = Integer.parseInt(retiro);
+                int nuevoSaldo;
+                userBank = new UserBank();
+                int saldo = userBank.getSaldo();
 
-                datos.updateUser(id,contentValues);
-                Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
-
-                if(datos.validateUserBank(userBank)){
+                if(dbHelper.validateUserBank(document,pin)){
+                    Toast.makeText(getApplicationContext(), "Usuario encontrado", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(RetiroActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
                 }
 
                 if (pin.equals(pinConfirm)){
                     Toast.makeText(RetiroActivity.this, "El pin Coincide", Toast.LENGTH_SHORT).show();
+                } else {
+                    pinRetiroConfirm.setError("pin no coincide");
+                }
+
+                if ( saldo > montoRetiro){
+                    nuevoSaldo = montoRetiro - saldo;
+                    userBank.setSaldo(nuevoSaldo);
+
+                    datos.open();
+                    datos.updateUserBank(id,contentValues);
+                    Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
 
 
                 } else {
-                    pinRetiroConfirm.setError("pin no coincide");
+                    Toast.makeText(getApplicationContext(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
                 }
             }
 

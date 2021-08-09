@@ -61,6 +61,7 @@ public class RegisterNewBankActivity extends AppCompatActivity {
                     data.inserUsuarioBank(usuariosBank);
                     Toast.makeText(RegisterNewBankActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
                     Toast.makeText(RegisterNewBankActivity.this, "El pin coincide correctamente", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(RegisterNewBankActivity.this, "El pin no coincide", Toast.LENGTH_SHORT).show();
                     passwordConfirm.setError("El pin no coincide");

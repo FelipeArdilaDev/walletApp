@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText tiEmailAddress;
     TextInputEditText tiPasswordLogin;
     Button btnIniciarSecion;
+    DBHelper dbHelper;
 
 
     @Override
@@ -49,19 +50,21 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
         btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
+
+        dbHelper = new DBHelper(this);
     }
 
 
     public void registrarCuenta(View v) {
         Intent intento = new Intent(this, RegistroActivity.class);
         startActivity(intento);
-
     }
 
     public void iniciarSesion(View v){
         tiEmailAddress = findViewById(R.id.tiEmailAddress);
         String email = tiEmailAddress.getText().toString();
         tiPasswordLogin = findViewById(R.id.tiPasswordLogin);
+        String password = tiPasswordLogin.getText().toString();
 
         Datos datos = new Datos(this);
         UserDataBase userDataBase = new UserDataBase();
@@ -82,10 +85,11 @@ public class LoginActivity extends AppCompatActivity {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
-        if (datos.validateUser(userDataBase)){
+        if (dbHelper.validateUser(email,password)){
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);
+            Toast.makeText(getApplicationContext(), "Has iniciado sesion", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
