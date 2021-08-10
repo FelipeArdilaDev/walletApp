@@ -91,5 +91,14 @@ public class UserDataBase implements Serializable {
         return contentValues;
     }
 
+    public ContentValues values(){
+        ContentValues contentValues = new ContentValues(1);
+        contentValues.put(SQLConstants.COLUMN_SALDO,saldo);
+
+        return contentValues;
+    }
+
+
+
 
 }

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.Corresponsal.UserBank;
+import com.example.Corresponsal.UserDataBase;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
 import com.example.SQLConstants;
@@ -24,8 +25,10 @@ public class RetiroActivity extends AppCompatActivity {
     TextInputEditText pinRetiroConfirm;
     Button retirarDinero;
     DBHelper dbHelper;
-    UserBank userBank;
     Datos datos;
+    UserBank userBank;
+    UserDataBase userDataBase;
+
 
 
     @Override
@@ -37,9 +40,17 @@ public class RetiroActivity extends AppCompatActivity {
 
         timontoRetiro = findViewById(R.id.timontoRetiro);
         numberDocument = findViewById(R.id.numberDocument);
+        pinRetiro = findViewById(R.id.pinRetiro);
+
+        pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
+
+
         dbHelper = new DBHelper(this);
-        userBank = new UserBank();
+
+
         datos = new Datos(this);
+        userBank = new UserBank();
+        userDataBase = new UserDataBase();
 
 
 
@@ -47,28 +58,35 @@ public class RetiroActivity extends AppCompatActivity {
         retirarDinero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = numberDocument.getText().toString();
+
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(SQLConstants.COLUMN_BANK_SALDO,
                         timontoRetiro.getText().toString());
 
-                pinRetiro = findViewById(R.id.pinRetiro);
+                String id = numberDocument.getText().toString();
+                userBank.setId(id);
+
+                String pin = pinRetiro.getText().toString();
+                userBank.setPassword(pin);
+
+
                 datos.open();
 
-                pinRetiro = findViewById(R.id.pinRetiro);
-                String pin = pinRetiro.getText().toString();
-                pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
-
                 String pinConfirm = pinRetiroConfirm.getText().toString();
-                String document = numberDocument.getText().toString();
-                String retiro = timontoRetiro.getText().toString();
+                String pinR = pinRetiro.getText().toString();
+                userBank.setPassword(pinR);
+
+
+                int retiroMonto = Integer.parseInt(timontoRetiro.getText().toString());
+                userBank.setSaldo(retiroMonto);
 
                 int montoRetiro;
-                montoRetiro = Integer.parseInt(retiro);
-                int nuevoSaldo;
-                int saldo = userBank.getSaldo();
+                montoRetiro = (retiroMonto);
 
-                if(dbHelper.validateUserBank(document,pin)){
+                int saldoC = userDataBase.getSaldo();
+                int nuevoSaldoC;
+
+                if(dbHelper.validateUserBank(id,pin)){
                     Toast.makeText(getApplicationContext(), "Usuario encontrado", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(RetiroActivity.this, "Datos incorrectos", Toast.LENGTH_SHORT).show();
@@ -81,12 +99,17 @@ public class RetiroActivity extends AppCompatActivity {
                     pinRetiroConfirm.setError("pin no coincide");
                 }
 
-                if ( saldo > montoRetiro){
-                    nuevoSaldo = saldo-montoRetiro;
-                    userBank.setSaldo(nuevoSaldo);
-
+                if (datos.validarMontoRetiro(userBank)){
                     datos.open();
                     datos.updateUserBank(userBank);
+                    onBackPressed();
+
+                    datos.recuperarDato(id);
+                    nuevoSaldoC = saldoC + 2000 + montoRetiro;
+                    userDataBase.setSaldo(nuevoSaldoC);
+                    datos.open();
+                    datos.updateUserCorresponsal(userDataBase);
+
                     Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
 
 

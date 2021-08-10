@@ -50,7 +50,7 @@ public class RegisterNewBankActivity extends AppCompatActivity {
 
                 UserBank usuariosBank = new UserBank(
                         id.getText().toString(),
-                        Integer.valueOf(saldoInicial.getText().toString()),
+                        Integer.parseInt(saldoInicial.getText().toString()),
                         numberCount.getText().toString(),
                         password.getText().toString()
                 );

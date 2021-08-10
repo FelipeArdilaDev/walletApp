@@ -76,7 +76,7 @@ public class RegistroActivity extends AppCompatActivity {
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
                     Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
-                    data.close();
+
 
                 } else {
                     Toast.makeText(getApplicationContext(), "Error al registrarse contrasñas no coinciden", Toast.LENGTH_SHORT).show();

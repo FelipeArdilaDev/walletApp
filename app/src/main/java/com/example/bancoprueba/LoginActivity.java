@@ -88,11 +88,13 @@ public class LoginActivity extends AppCompatActivity {
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);
+            datos.guardarDato(email);
             Toast.makeText(getApplicationContext(), "Has iniciado sesion", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
+
     }
 
 

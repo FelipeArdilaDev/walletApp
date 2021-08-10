@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.Corresponsal.UserBank;
+import com.example.Corresponsal.UserDataBase;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
 import com.example.SQLConstants;
@@ -21,7 +22,9 @@ public class DepositoActivity extends AppCompatActivity {
     Button depositar;
     DBHelper dbHelper;
     Datos datos;
-    UserBank userBank;
+    SQLConstants sql;
+    UserBank userBank = new UserBank();
+    UserDataBase userDataBase = new UserDataBase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +34,18 @@ public class DepositoActivity extends AppCompatActivity {
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
         tiMontoDeposito = findViewById(R.id.tiMontoDeposito);
         dbHelper = new DBHelper(this);
-        userBank = new UserBank();
         datos  = new Datos(this);
         depositar = findViewById(R.id.depositar);
         depositar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = tiDocument.getText().toString();
                 ContentValues contentValues = new ContentValues(1);
-                contentValues.put(SQLConstants.COLUMN_BANK_SALDO,
+                contentValues.put(SQLConstants.USUARIOS_BANK,
                         tiMontoDeposito.getText().toString());
+
+
+
+                
 
 
                 String deposito = tiMontoDeposito.getText().toString();
@@ -53,7 +58,7 @@ public class DepositoActivity extends AppCompatActivity {
                 String email = tiDocument.getText().toString();
 
                 if(dbHelper.validateUserBankDeposito(email)){
-                    nuevoSaldo = saldo+montoDeposito;
+                    nuevoSaldo = saldo + montoDeposito;
                     userBank.setSaldo(nuevoSaldo);
                     datos.open();
                     datos.updateUserBank(userBank);

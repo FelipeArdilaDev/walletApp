@@ -6,7 +6,7 @@ import com.example.SQLConstants;
 
 import java.io.Serializable;
 
-public class UserBank implements Serializable {
+public class UserBank {
 
     private String id;
     private int saldo;
