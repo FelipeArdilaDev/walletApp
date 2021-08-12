@@ -1,6 +1,5 @@
 package com.example.bancoprueba;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,13 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
@@ -54,8 +49,8 @@ public class RegistroActivity extends AppCompatActivity {
         crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserDataBase usuario;
-                usuario = new UserDataBase(
+                CorrespondentBankUser usuario;
+                usuario = new CorrespondentBankUser(
                         id.getText().toString(),
                         name.getText().toString(),
                         email.getText().toString(),

@@ -5,19 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.Corresponsal.UserBank;
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class MenuActivity extends AppCompatActivity {
 
     TextView tvSaldo;
     TextView tvName;
+    CorrespondentBankUser correspondentBankUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +39,11 @@ public class MenuActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         tvSaldo = findViewById(R.id.tvSaldo);
 
+
+
        Datos datos = new Datos(this);
-       UserDataBase userDataBase = datos.mostrarDatos(email);
-       tvSaldo.setText(String.valueOf("saldo: " + userDataBase.getSaldo()));
+       CorrespondentBankUser correspondentBankUser = datos.mostrarDatos(email);
+       tvSaldo.setText(String.valueOf("saldo: " + correspondentBankUser.getSaldo()));
 
 
 

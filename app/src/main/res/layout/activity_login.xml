@@ -80,7 +80,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Password"
+                android:hint="Contraseña"
                 app:boxStrokeColor="#1D0B47"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
@@ -110,6 +110,15 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:cornerRadius="10dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:gravity="center"
+                android:text="Nuevo en esta experiencia?" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegistrarCuenta"

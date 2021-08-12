@@ -6,7 +6,7 @@ import com.example.SQLConstants;
 
 import java.io.Serializable;
 
-public class UserBank {
+public class UserBankClient {
 
     private String id;
     private int saldo;
@@ -14,7 +14,7 @@ public class UserBank {
     private String password;
 
 
-    public UserBank(String id, int saldo, String numberCount, String password){
+    public UserBankClient(String id, int saldo, String numberCount, String password){
         this.id = id;
         this.saldo = saldo;
         this.numberCount = numberCount;
@@ -22,7 +22,7 @@ public class UserBank {
 
     }
 
-    public UserBank(){
+    public UserBankClient(){
 
     }
 

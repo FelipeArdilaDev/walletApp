@@ -1,32 +1,17 @@
 package com.example.bancoprueba;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.service.autofill.UserData;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserBank;
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
-import com.example.SQLConstants;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.text.BreakIterator;
-import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText tiPasswordLogin;
     Button btnIniciarSecion;
     DBHelper dbHelper;
+    CorrespondentBankUser correspondentBankUser;
 
 
     @Override
@@ -52,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
 
         dbHelper = new DBHelper(this);
+        correspondentBankUser = new CorrespondentBankUser();
     }
 
 
@@ -63,8 +50,10 @@ public class LoginActivity extends AppCompatActivity {
     public void iniciarSesion(View v){
         tiEmailAddress = findViewById(R.id.tiEmailAddress);
         String email = tiEmailAddress.getText().toString();
+        correspondentBankUser.setEmail(email);
         tiPasswordLogin = findViewById(R.id.tiPasswordLogin);
         String password = tiPasswordLogin.getText().toString();
+        correspondentBankUser.setPassword(password);
 
         Datos datos = new Datos(this);
         datos.open();
@@ -84,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
-        if (dbHelper.validateUser(email,password)){
+        if (datos.validateUserCorrespondent(correspondentBankUser)){
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);

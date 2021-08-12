@@ -8,10 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserBank;
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.UserBankClient;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Helpers.DBHelper;
-import com.example.bancoprueba.RetiroActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.regex.Pattern;
@@ -19,7 +18,7 @@ import java.util.regex.Pattern;
 public class Datos {
 
 
-    public UserDataBase userDataBase;
+    public CorrespondentBankUser correspondentBankUser;
     public ContentValues values;
     public static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -29,8 +28,7 @@ public class Datos {
     public Context context;
     public SQLiteDatabase db;
     public SQLiteOpenHelper sqLiteOpenHelper;
-    public ContentValues contentValues;
-    RetiroActivity retiro;
+
 
 
 
@@ -53,21 +51,21 @@ public class Datos {
 
     }
 
-    public void insertUsuario(UserDataBase usuario) {
+    public void insertUsuario(CorrespondentBankUser usuario) {
         ContentValues values = usuario.toValues();
         db.insert(SQLConstants.TABLE_USUARIOS, null, values);
 
 
     }
 
-    public void insertUsuarioBank(UserBank userBank) {
-        ContentValues values = userBank.toValues();
+    public void insertUsuarioBank(UserBankClient userBankClient) {
+        ContentValues values = userBankClient.toValues();
         db.insert(SQLConstants.USUARIOS_BANK, null, values);
     }
 
-    public UserDataBase mostrarDatos(String email) {
+    public CorrespondentBankUser mostrarDatos(String email) {
 
-        UserDataBase userDataBase1 = new UserDataBase();
+        CorrespondentBankUser correspondentBankUser1 = new CorrespondentBankUser();
         SQLiteDatabase sqLiteDatabase = this.sqLiteOpenHelper.getReadableDatabase();
         String query = " SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + "='" + SQLConstants.TABLE_USUARIOS + "';";
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
@@ -75,19 +73,19 @@ public class Datos {
             if (cursor.getCount() !=0) {
                 while (cursor.moveToNext()) {
 
-                    userDataBase1.setSaldo(Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_SALDO))));
+                    correspondentBankUser1.setSaldo(Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_SALDO))));
 
-                    return  userDataBase1;
+                    return correspondentBankUser1;
 
                 }
 
 
             }
-        return  userDataBase1;
+        return correspondentBankUser1;
     }
 
-    public UserBank getUser(String id){
-        UserBank userBank = new UserBank();
+    public UserBankClient getUser(String id){
+        UserBankClient userBankClient = new UserBankClient();
         String[] whereArgs = new String[]{id};
         Cursor cursor = db.query(SQLConstants.USUARIOS_BANK,
                 SQLConstants.BANK_COLUMN,
@@ -97,26 +95,26 @@ public class Datos {
 
         if (cursor.getCount() == 1){
             cursor.moveToFirst();
-            userBank.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID)));
-            userBank.setNumberCount(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_NUMBER_COUNT)));
-            userBank.setSaldo(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
-            userBank.setPassword(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD)));
+            userBankClient.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID)));
+            userBankClient.setNumberCount(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_NUMBER_COUNT)));
+            userBankClient.setSaldo(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+            userBankClient.setPassword(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD)));
 
 
         }
-        return userBank;
+        return userBankClient;
 
     }
 
-    public void updateUserBank(UserBank userBank){
-        ContentValues values = userBank.values();
+    public void updateUserBank(UserBankClient userBankClient){
+        ContentValues values = userBankClient.values();
         SQLiteDatabase sqLiteDatabase1 = this.sqLiteOpenHelper.getWritableDatabase();
         sqLiteDatabase1.update(SQLConstants.USUARIOS_BANK,
                 values,SQLConstants.COLUMN_BANK_ID,null);
     }
 
-    public void updateUserCorresponsal(UserDataBase userDataBase){
-        ContentValues values = userDataBase.values();
+    public void updateUserCorresponsal(CorrespondentBankUser correspondentBankUser){
+        ContentValues values = correspondentBankUser.values();
         SQLiteDatabase sqLiteDatabase1 = this.sqLiteOpenHelper.getWritableDatabase();
         sqLiteDatabase1.update(SQLConstants.TABLE_USUARIOS,
                 values,SQLConstants.COLUMN_SALDO,null);
@@ -157,7 +155,7 @@ public class Datos {
         String dato = sp.getString("documento",id);
 
         if(dato.equals("")) {
-            userDataBase.setEmail("");
+            correspondentBankUser.setEmail("");
             Toast.makeText(context, "No Existe", Toast.LENGTH_SHORT).show();
 
 
@@ -166,17 +164,60 @@ public class Datos {
 
     }
 
-    public boolean validarMontoRetiro(UserBank userBank) {
+    public boolean validarMontoRetiro(UserBankClient userBankClient) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID+ " = '" + userBank.getId() + "';";
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID+ " = '" + userBankClient.getId() + "';";
         Cursor cursor = db.rawQuery(query, null);
         try {
             if (cursor.getCount() != 0) {
                 while (cursor.moveToNext()) {
                     int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
-                    if (userBank.getSaldo() < valor) {
-                        int retiro = valor - userBank.getSaldo();
-                        userBank.setSaldo(retiro);
+                    if (userBankClient.getSaldo() < valor) {
+                        int retiro = valor - userBankClient.getSaldo();
+                        userBankClient.setSaldo(retiro);
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
+
+    public boolean validateUserCorrespondent(CorrespondentBankUser correspondentBankUser) {
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + " = '" + correspondentBankUser.getEmail() + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    String email = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL));
+                    String password = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD));
+                    if (correspondentBankUser.getEmail().equals(email) && (correspondentBankUser.getPassword().equals(password))) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean validateUserClient(UserBankClient userBankClient) {
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    String document = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID));
+                    String pin = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD));
+                    if (userBankClient.getId().equals(document) && (userBankClient.getPassword().equals(pin))) {
                         return true;
                     }
                 }

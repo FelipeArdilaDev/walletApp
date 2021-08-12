@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserBank;
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.UserBankClient;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
 import com.example.SQLConstants;
@@ -23,8 +23,8 @@ public class DepositoActivity extends AppCompatActivity {
     DBHelper dbHelper;
     Datos datos;
     SQLConstants sql;
-    UserBank userBank = new UserBank();
-    UserDataBase userDataBase = new UserDataBase();
+    UserBankClient userBankClient = new UserBankClient();
+    CorrespondentBankUser correspondentBankUser = new CorrespondentBankUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +33,10 @@ public class DepositoActivity extends AppCompatActivity {
         tiDocument = findViewById(R.id.tiDocumentDeposito);
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
         tiMontoDeposito = findViewById(R.id.tiMontoDeposito);
+
         dbHelper = new DBHelper(this);
         datos  = new Datos(this);
+
         depositar = findViewById(R.id.depositar);
         depositar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,15 +55,15 @@ public class DepositoActivity extends AppCompatActivity {
                 int montoDeposito;
                 montoDeposito = Integer.parseInt(deposito);
                 int nuevoSaldo;
-                int saldo = userBank.getSaldo();
+                int saldo = userBankClient.getSaldo();
 
                 String email = tiDocument.getText().toString();
 
                 if(dbHelper.validateUserBankDeposito(email)){
                     nuevoSaldo = saldo + montoDeposito;
-                    userBank.setSaldo(nuevoSaldo);
+                    userBankClient.setSaldo(nuevoSaldo);
                     datos.open();
-                    datos.updateUserBank(userBank);
+                    datos.updateUserBank(userBankClient);
                     Toast.makeText(DepositoActivity.this, "Se realizo el deposito", Toast.LENGTH_SHORT).show();
 
                 } else {

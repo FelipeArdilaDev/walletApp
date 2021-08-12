@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserBank;
-import com.example.Corresponsal.UserDataBase;
+import com.example.Corresponsal.UserBankClient;
+import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -21,7 +21,7 @@ public class RegisterNewBankActivity extends AppCompatActivity {
     TextInputEditText passwordConfirm;
     Datos data;
     Button crearCuentaBank;
-    UserDataBase userDataBase;
+    CorrespondentBankUser correspondentBankUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class RegisterNewBankActivity extends AppCompatActivity {
 
 
 
-                UserBank usuariosBank = new UserBank(
+                UserBankClient usuariosBank = new UserBankClient(
                         id.getText().toString(),
                         Integer.parseInt(saldoInicial.getText().toString()),
                         numberCount.getText().toString(),

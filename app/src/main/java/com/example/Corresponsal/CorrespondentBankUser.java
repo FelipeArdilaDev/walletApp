@@ -6,17 +6,17 @@ import com.example.SQLConstants;
 
 import java.io.Serializable;
 
-public class UserDataBase implements Serializable {
+public class CorrespondentBankUser implements Serializable {
 
     private String id;
     private String name;
     private String email;
     private String password;
     private String phone;
-    private int saldo=1000000;
+    private int saldo = 1000000;
 
 
-    public UserDataBase(String id, String name, String email, String password, String phone){
+    public CorrespondentBankUser(String id, String name, String email, String password, String phone){
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,7 +25,7 @@ public class UserDataBase implements Serializable {
 
     }
 
-    public UserDataBase() {
+    public CorrespondentBankUser() {
     }
 
 
@@ -86,7 +86,7 @@ public class UserDataBase implements Serializable {
         contentValues.put(SQLConstants.COLUMN_NAME,name);
         contentValues.put(SQLConstants.COLUMN_PASSWORD,password);
         contentValues.put(SQLConstants.COLUMN_PHONE,phone);
-        contentValues.put(SQLConstants.COLUMN_SALDO,saldo=1000000);
+        contentValues.put(SQLConstants.COLUMN_SALDO,saldo);
 
         return contentValues;
     }
