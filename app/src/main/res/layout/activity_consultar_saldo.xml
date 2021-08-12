@@ -28,7 +28,7 @@
                 android:gravity="center"
                 android:text="SALDO"
                 android:textSize="30sp"
-                android:textColor="#1D0B47"/>
+                android:textColor="#0B2847"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tiNameBank"
@@ -40,8 +40,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Consultar Saldo"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiCOnsulta"
@@ -59,7 +59,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="100dp"
-                android:backgroundTint="#1D0B47"
+                android:backgroundTint="#0B2847"
                 android:text="Consultar Saldo"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
@@ -76,7 +76,7 @@
                 android:gravity="center"
                 android:text=""
                 android:textSize="50sp"
-                android:textColor="#1D0B47"/>
+                android:textColor="#0B2847"/>
         </LinearLayout>
 
     </ScrollView>

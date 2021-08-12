@@ -43,7 +43,7 @@ public class MenuActivity extends AppCompatActivity {
 
        Datos datos = new Datos(this);
        CorrespondentBankUser correspondentBankUser = datos.mostrarDatos(email);
-       tvSaldo.setText(String.valueOf("saldo: " + correspondentBankUser.getSaldo()));
+       tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
 
 
 

@@ -19,7 +19,6 @@ public class Datos {
 
 
     public CorrespondentBankUser correspondentBankUser;
-    public ContentValues values;
     public static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     ".{4,20}" +
@@ -119,6 +118,7 @@ public class Datos {
         sqLiteDatabase1.update(SQLConstants.TABLE_USUARIOS,
                 values,SQLConstants.COLUMN_SALDO,null);
     }
+
 
     public static boolean checkEmail(String email){
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();

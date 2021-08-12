@@ -26,7 +26,7 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Registrate!"
-                android:textColor="#1D0B47"
+                android:textColor="#0B2847"
                 android:textSize="35sp" />
 
             <TextView
@@ -49,8 +49,8 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginTop="5dp"
                 android:hint="Nombre"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nameUser"
@@ -69,11 +69,11 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginTop="5dp"
                 android:hint="Email address"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_mark_email_read_24"
                 app:endIconMode="custom"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
@@ -93,10 +93,10 @@
                 android:layout_marginTop="5dp"
                 app:endIconDrawable="@drawable/ic_baseline_person_24"
                 app:endIconMode="custom"
-                app:endIconTint="#1D0B47"
+                app:endIconTint="#0B2847"
                 android:hint="Documento"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idRegister"
@@ -116,10 +116,10 @@
                 android:layout_marginTop="5dp"
                 app:endIconDrawable="@drawable/ic_baseline_smartphone_24"
                 app:endIconMode="custom"
-                app:endIconTint="#1D0B47"
+                app:endIconTint="#0B2847"
                 android:hint="Celular"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/numberPhone"
@@ -138,11 +138,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Contraseña"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordRegister"
@@ -161,11 +161,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Confirmar Contraseña"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiPassword"
@@ -183,7 +183,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="100dp"
-                android:backgroundTint="#1D0B47"
+                android:backgroundTint="#0B2847"
                 android:text="Crear Cuenta"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"

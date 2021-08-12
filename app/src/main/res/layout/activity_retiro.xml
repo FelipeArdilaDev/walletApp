@@ -26,7 +26,7 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Retiros"
-                android:textColor="#1D0B47"
+                android:textColor="#0B2847"
                 android:textSize="35sp" />
 
             <TextView
@@ -49,8 +49,8 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginTop="5dp"
                 android:hint="numero de cedula"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/numberDocument"
@@ -71,10 +71,10 @@
                 android:layout_marginTop="5dp"
                 app:endIconDrawable="@drawable/ic_withdrawal"
                 app:endIconMode="custom"
-                app:endIconTint="#1D0B47"
+                app:endIconTint="#0B2847"
                 android:hint="Monto a retirar"
-                app:boxStrokeColor="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:boxStrokeColor="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/timontoRetiro"
@@ -93,11 +93,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Pin de la cuenta"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0D0B47"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pinRetiro"
@@ -116,11 +116,11 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Confirmar Pin"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/pinRetiroConfirm"
@@ -138,7 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="100dp"
-                android:backgroundTint="#1D0B47"
+                android:backgroundTint="#0B2847"
                 android:text="Realizar Retiro"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"

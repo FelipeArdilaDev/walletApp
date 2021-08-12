@@ -23,7 +23,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
-                android:src="@drawable/ic_bank_building" />
+                android:src="@drawable/bancicon" />
 
             <TextView
                 android:id="@+id/textView"
@@ -34,7 +34,7 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:textColor="#1D0B47"
+                android:textColor="#0B2847"
                 android:text="Banco Corresponsal"
                 android:textSize="28sp" />
 
@@ -58,11 +58,11 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email address"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_mark_email_read_24"
                 app:endIconMode="custom"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiEmailAddress"
@@ -81,11 +81,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Contraseña"
-                app:boxStrokeColor="#1D0B47"
+                app:boxStrokeColor="#0B2847"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#1D0B47"
-                app:hintTextColor="#1D0B47">
+                app:endIconTint="#0B2847"
+                app:hintTextColor="#0B2847">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiPasswordLogin"
@@ -103,7 +103,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="120dp"
-                android:backgroundTint="#1D0B47"
+                android:backgroundTint="#0B2847"
                 android:onClick="iniciarSesion"
                 android:text="Iniciar Sesion"
                 android:textAllCaps="false"
@@ -130,7 +130,7 @@
                 android:onClick="registrarCuenta"
                 android:text="Registrarse"
                 android:textAllCaps="false"
-                android:textColor="#1D0B47"
+                android:textColor="#0B2847"
                 android:textSize="18sp" />
 
         </LinearLayout>
