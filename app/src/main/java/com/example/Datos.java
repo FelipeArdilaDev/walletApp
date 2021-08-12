@@ -99,7 +99,6 @@ public class Datos {
             userBankClient.setSaldo(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
             userBankClient.setPassword(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD)));
 
-
         }
         return userBankClient;
 
@@ -117,6 +116,13 @@ public class Datos {
         SQLiteDatabase sqLiteDatabase1 = this.sqLiteOpenHelper.getWritableDatabase();
         sqLiteDatabase1.update(SQLConstants.TABLE_USUARIOS,
                 values,SQLConstants.COLUMN_SALDO,null);
+    }
+
+    public void updateUserBankCopnsulta(UserBankClient userBankClient){
+        ContentValues values = userBankClient.valuesConsulta();
+        SQLiteDatabase sqLiteDatabase1 = this.sqLiteOpenHelper.getWritableDatabase();
+        sqLiteDatabase1.update(SQLConstants.USUARIOS_BANK,
+                values,SQLConstants.COLUMN_BANK_ID,null);
     }
 
 
@@ -218,6 +224,29 @@ public class Datos {
                     String document = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID));
                     String pin = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_PASSWORD));
                     if (userBankClient.getId().equals(document) && (userBankClient.getPassword().equals(pin))) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
+    public boolean consultaUserClient(UserBankClient userBankClient) {
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    String document = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID));
+                    int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+                    if (userBankClient.getId().equals(document)) {
+                        int consulta = valor - 1000;
+                        userBankClient.setSaldo(consulta);
                         return true;
                     }
                 }

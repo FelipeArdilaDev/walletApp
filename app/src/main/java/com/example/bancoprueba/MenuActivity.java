@@ -20,6 +20,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        correspondentBankUser = new CorrespondentBankUser();
 
 
         String email;
@@ -38,7 +39,6 @@ public class MenuActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         tvSaldo = findViewById(R.id.tvSaldo);
-
 
 
        Datos datos = new Datos(this);

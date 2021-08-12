@@ -29,14 +29,6 @@
                 android:textColor="#0B2847"
                 android:textSize="30sp" />
 
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:text="TextView" />
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/retirarMonto"
                 android:layout_width="match_parent"
@@ -283,7 +275,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="45dp"
+                android:layout_marginBottom="20dp"
                 android:checkable="true"
                 android:clickable="true"
                 android:focusable="true"
@@ -316,7 +308,7 @@
                         android:foregroundGravity="center"
                         android:gravity="center_vertical"
                         android:padding="25dp"
-                        android:text="Crear CUenta"
+                        android:text="Crear Cuenta"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         android:textColor="@android:color/white" />
 
@@ -324,6 +316,18 @@
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvSaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="20sp" />
 
 
         </LinearLayout>

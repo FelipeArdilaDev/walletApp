@@ -71,7 +71,15 @@ public class UserBankClient {
 
     public ContentValues values(){
         ContentValues contentValues = new ContentValues(1);
-        contentValues.put(SQLConstants.COLUMN_BANK_SALDO,saldo-2000);
+        contentValues.put(SQLConstants.COLUMN_BANK_SALDO,saldo);
+
+        return contentValues;
+
+    }
+
+    public ContentValues valuesConsulta(){
+        ContentValues contentValues = new ContentValues(1);
+        contentValues.put(SQLConstants.COLUMN_BANK_SALDO,saldo);
 
         return contentValues;
 

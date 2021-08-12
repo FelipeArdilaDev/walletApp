@@ -34,6 +34,8 @@ public class DepositoActivity extends AppCompatActivity {
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
         tiMontoDeposito = findViewById(R.id.tiMontoDeposito);
 
+
+
         dbHelper = new DBHelper(this);
         datos  = new Datos(this);
 

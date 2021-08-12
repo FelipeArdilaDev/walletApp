@@ -68,6 +68,8 @@ public class RegistroActivity extends AppCompatActivity {
                     data = new Datos(getApplicationContext());
                     data.open();
                     data.insertUsuario(usuario);
+
+
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
                     Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
