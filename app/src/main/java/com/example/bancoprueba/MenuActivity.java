@@ -9,44 +9,28 @@ import android.widget.TextView;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
+import com.example.SQLConstants;
 
 public class MenuActivity extends AppCompatActivity {
 
     TextView tvSaldo;
     TextView tvName;
     CorrespondentBankUser correspondentBankUser;
+    Datos datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        correspondentBankUser = new CorrespondentBankUser();
-
-
-        String email;
-        if (savedInstanceState == null) {
-            Bundle extras = getIntent().getExtras();
-            if (extras == null) {
-                email = null;
-
-            } else {
-                email = extras.getString("email");
-            }
-        } else {
-            email = (String) savedInstanceState.getSerializable("email");
-        }
-
-
         getSupportActionBar().hide();
+
+        correspondentBankUser = new CorrespondentBankUser();
+        datos = new Datos(this);
+
+        datos.recuperarDato("documento");
+
         tvSaldo = findViewById(R.id.tvSaldo);
-
-
-       Datos datos = new Datos(this);
-       CorrespondentBankUser correspondentBankUser = datos.mostrarDatos(email);
-       tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
-
-
-
+        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
     }
 
     public void registerBank(View v) {

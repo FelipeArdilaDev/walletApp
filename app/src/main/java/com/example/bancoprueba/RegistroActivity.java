@@ -57,6 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
                         password.getText().toString(),
                         phone.getText().toString()
                 );
+                usuario.setSaldo(1000000);
                 if (validatePassword(password)){
                     Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
 

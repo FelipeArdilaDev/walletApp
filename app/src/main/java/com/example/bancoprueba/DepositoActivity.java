@@ -23,8 +23,7 @@ public class DepositoActivity extends AppCompatActivity {
     DBHelper dbHelper;
     Datos datos;
     SQLConstants sql;
-    UserBankClient userBankClient = new UserBankClient();
-    CorrespondentBankUser correspondentBankUser = new CorrespondentBankUser();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +48,16 @@ public class DepositoActivity extends AppCompatActivity {
 
 
 
-                
 
+
+
+                UserBankClient userBankClient = new UserBankClient();
+                CorrespondentBankUser correspondentBankUser = new CorrespondentBankUser();
 
                 String deposito = tiMontoDeposito.getText().toString();
+
+                int saldoResta = correspondentBankUser.getSaldo();
+                int saldoC;
 
                 int montoDeposito;
                 montoDeposito = Integer.parseInt(deposito);
@@ -63,10 +68,15 @@ public class DepositoActivity extends AppCompatActivity {
 
                 if(dbHelper.validateUserBankDeposito(email)){
                     nuevoSaldo = saldo + montoDeposito;
+                    saldoC = saldoResta - montoDeposito + 1000;
+                    correspondentBankUser.setSaldo(saldoC);
+
                     userBankClient.setSaldo(nuevoSaldo);
                     datos.open();
                     datos.updateUserBank(userBankClient);
+                    datos.updateUserCorresponsal(correspondentBankUser);
                     Toast.makeText(DepositoActivity.this, "Se realizo el deposito", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
 
                 } else {
                     Toast.makeText(DepositoActivity.this, "No existe el usuario", Toast.LENGTH_SHORT).show();

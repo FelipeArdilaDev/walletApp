@@ -13,7 +13,7 @@ public class CorrespondentBankUser implements Serializable {
     private String email;
     private String password;
     private String phone;
-    private int saldo=1000000;
+    private int saldo;
 
 
     public CorrespondentBankUser(String id, String name, String email, String password, String phone){

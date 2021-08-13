@@ -43,6 +43,9 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
         consultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 String id = buscar.getText().toString();
                 userBankClient.setId(id);
                 datos = new Datos(getApplicationContext());
@@ -55,7 +58,7 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
                     nuevoSaldo = saldoCorresponsal + 1000;
                     bankCorresponsal.setSaldo(nuevoSaldo);
                     datos.updateUserCorresponsal(bankCorresponsal);
-                    onBackPressed();
+
                     Toast.makeText(ConsultarSaldoActivity.this, "Se encontro el usuario", Toast.LENGTH_SHORT).show();
 
                 } else {
