@@ -148,22 +148,23 @@ public class Datos {
     }
 
 
-    public void guardarDato(String id){
-        SharedPreferences sp = context.getSharedPreferences("documento", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        String email = SQLConstants.COLUMN_EMAIL;
-        editor.putString(email,id);
+
+    public void guardarDato(){
+        String emailC = correspondentBankUser.getEmail();
+        int saldoC = correspondentBankUser.getSaldo();
+        SharedPreferences preferencias = context.getSharedPreferences("datos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.putString("email",emailC);
+        editor.putInt("saldo",saldoC);
         editor.commit();
+        Toast.makeText(context.getApplicationContext(), "Dato guardado", Toast.LENGTH_SHORT).show();
     }
 
-    public void recuperarDato(String id){
-        SharedPreferences sp = context.getSharedPreferences("documento", Context.MODE_PRIVATE);
-        String dato = sp.getString(id,"");
+   public void recuperarDato(){
+       SharedPreferences prefe = context.getSharedPreferences("datos", Context.MODE_PRIVATE);
+       String user = prefe.getString("email","No existe");
+       int saldo = prefe.getInt("saldo",0);
 
-        if(dato.equals("")) {
-            correspondentBankUser.setEmail("");
-            Toast.makeText(context, "No Existe", Toast.LENGTH_SHORT).show();
-        }
     }
 
     public boolean validarMontoRetiro(UserBankClient userBankClient) {
@@ -187,6 +188,7 @@ public class Datos {
         }
         return false;
     }
+
 
 
     public boolean validateUserCorrespondent(CorrespondentBankUser correspondentBankUser) {
@@ -253,6 +255,31 @@ public class Datos {
         }
         return false;
     }
+
+    public boolean validateUserClientDeposito(UserBankClient userBankClient) {
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    String document = cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_ID));
+                    int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+                    if (userBankClient.getId().equals(document)) {
+                        int deposito = valor;
+                        userBankClient.setSaldo(deposito);
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
+
 
 }
 

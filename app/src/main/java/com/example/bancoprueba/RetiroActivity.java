@@ -3,6 +3,8 @@ package com.example.bancoprueba;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -100,10 +102,12 @@ public class RetiroActivity extends AppCompatActivity {
                 if (datos.validarMontoRetiro(userBankClient)){
                     datos.open();
                     datos.updateUserBank(userBankClient);
+                    SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                    int saldo = prefe.getInt("saldo",0);
                     onBackPressed();
 
-                    datos.recuperarDato(id);
-                    nuevoSaldoC = saldoC + 2000 + montoRetiro;
+                    //datos.recuperarDato(correspondentBankUser);
+                    nuevoSaldoC = saldo + 2000 + montoRetiro;
                     correspondentBankUser.setSaldo(nuevoSaldoC);
                     datos.open();
                     datos.updateUserCorresponsal(correspondentBankUser);

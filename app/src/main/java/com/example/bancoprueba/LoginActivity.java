@@ -2,7 +2,9 @@ package com.example.bancoprueba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
+import com.example.SQLConstants;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -77,13 +80,12 @@ public class LoginActivity extends AppCompatActivity {
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);
-            datos.guardarDato(email);
+            //datos.guardarDato(correspondentBankUser);
             Toast.makeText(getApplicationContext(), "Has iniciado sesion", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 

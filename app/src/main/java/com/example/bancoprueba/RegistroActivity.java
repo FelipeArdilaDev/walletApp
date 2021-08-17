@@ -2,8 +2,11 @@ package com.example.bancoprueba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -24,6 +27,8 @@ public class RegistroActivity extends AppCompatActivity {
     Button crearCuenta;
     Datos data;
 
+    private static final String KEY_ = "MY_KEY";
+
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -37,6 +42,10 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
+        data = new Datos(this);
+
+
+
 
         name = findViewById(R.id.nameUser);
         email = findViewById(R.id.email);
@@ -44,8 +53,8 @@ public class RegistroActivity extends AppCompatActivity {
         passwordConfirm = findViewById(R.id.tiPassword);
         phone = findViewById(R.id.numberPhone);
         id = findViewById(R.id.idRegister);
-        crearCuenta = findViewById(R.id.retirarDinero);
 
+        crearCuenta = findViewById(R.id.retirarDinero);
         crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +67,7 @@ public class RegistroActivity extends AppCompatActivity {
                         phone.getText().toString()
                 );
                 usuario.setSaldo(1000000);
-                if (validatePassword(password)){
+                if (data.validatePassword(password)){
                     Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -69,42 +78,29 @@ public class RegistroActivity extends AppCompatActivity {
                     data = new Datos(getApplicationContext());
                     data.open();
                     data.insertUsuario(usuario);
-
-
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
                     Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
-
-
                 } else {
                     Toast.makeText(getApplicationContext(), "Error al registrarse contrasñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
 
-
-
+                String name = usuario.getName();
+                int saldoC = usuario.getSaldo();
+                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putString("name",name);
+                editor.putInt("saldo",saldoC);
+                editor.commit();
+                Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
             }
         });
 
+
+
     }
 
-    private boolean validatePassword(TextInputEditText passwordRegister) {
-        String passwordInput = passwordRegister.getText().toString().trim();
 
-        if (passwordInput.isEmpty()) {
-            passwordRegister.setError("El campo no puede estar vacío");
-            return false;
-        }
-
-
-        else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
-            passwordRegister.setError("La contraseña es demasiado débil");
-            return false;
-        } else {
-
-            return true;
-        }
-
-    }
 
 
 

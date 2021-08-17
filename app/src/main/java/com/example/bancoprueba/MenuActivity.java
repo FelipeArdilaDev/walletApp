@@ -2,10 +2,13 @@ package com.example.bancoprueba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
@@ -27,10 +30,17 @@ public class MenuActivity extends AppCompatActivity {
         correspondentBankUser = new CorrespondentBankUser();
         datos = new Datos(this);
 
-        datos.recuperarDato("documento");
 
+        SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        int saldo = prefe.getInt("saldo",0);
+        String name = prefe.getString("name","");
+
+        //datos.recuperarDato(correspondentBankUser);
         tvSaldo = findViewById(R.id.tvSaldo);
-        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
+        tvName = findViewById(R.id.tvName);
+        tvName.setText("Bienvenido: " + name);
+        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + saldo));
+
     }
 
     public void registerBank(View v) {

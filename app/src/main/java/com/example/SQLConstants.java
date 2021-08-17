@@ -21,7 +21,7 @@ public class SQLConstants {
                     COLUMN_NAME + " TEXT, " +
                     COLUMN_PHONE + " TEXT, " +
                     COLUMN_EMAIL + " TEXT, " +
-                    COLUMN_SALDO + " INTEGER DEFSULT 0, " +
+                    COLUMN_SALDO + " TEXT, " +
                     COLUMN_PASSWORD + " TEXT " + ");";
 
     public static final String SQL_DELETE =

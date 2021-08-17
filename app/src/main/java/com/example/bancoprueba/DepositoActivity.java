@@ -3,6 +3,8 @@ package com.example.bancoprueba;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,54 +24,55 @@ public class DepositoActivity extends AppCompatActivity {
     Button depositar;
     DBHelper dbHelper;
     Datos datos;
-    SQLConstants sql;
+    UserBankClient userBankClient;
+    CorrespondentBankUser correspondentBankUser;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposito);
+        getSupportActionBar().hide();
+
         tiDocument = findViewById(R.id.tiDocumentDeposito);
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
         tiMontoDeposito = findViewById(R.id.tiMontoDeposito);
 
 
 
+        correspondentBankUser = new CorrespondentBankUser();
+        userBankClient = new UserBankClient();
         dbHelper = new DBHelper(this);
-        datos  = new Datos(this);
+
 
         depositar = findViewById(R.id.depositar);
         depositar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContentValues contentValues = new ContentValues(1);
-                contentValues.put(SQLConstants.USUARIOS_BANK,
-                        tiMontoDeposito.getText().toString());
+                String id = tiDocument.getText().toString();
+                userBankClient.setId(id);
+
+                datos  = new Datos(getApplicationContext());
+                datos.open();
+                SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                int saldo = prefe.getInt("saldo",0);
+                //datos.recuperarDato(correspondentBankUser);
 
 
-
-
-
-
-                UserBankClient userBankClient = new UserBankClient();
-                CorrespondentBankUser correspondentBankUser = new CorrespondentBankUser();
 
                 String deposito = tiMontoDeposito.getText().toString();
-
-                int saldoResta = correspondentBankUser.getSaldo();
-                int saldoC;
-
+                int valorComision = correspondentBankUser.getSaldo();
+                int saldoNuevo;
                 int montoDeposito;
                 montoDeposito = Integer.parseInt(deposito);
                 int nuevoSaldo;
-                int saldo = userBankClient.getSaldo();
 
-                String email = tiDocument.getText().toString();
 
-                if(dbHelper.validateUserBankDeposito(email)){
-                    nuevoSaldo = saldo + montoDeposito;
-                    saldoC = saldoResta - montoDeposito + 1000;
-                    correspondentBankUser.setSaldo(saldoC);
+                if(datos.validateUserClientDeposito(userBankClient)){
+                    nuevoSaldo = userBankClient.getSaldo() + montoDeposito;
+                    saldoNuevo = saldo - montoDeposito + 1000;
+                    correspondentBankUser.setSaldo(saldoNuevo);
 
                     userBankClient.setSaldo(nuevoSaldo);
                     datos.open();

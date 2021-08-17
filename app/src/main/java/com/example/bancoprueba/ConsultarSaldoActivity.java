@@ -2,6 +2,8 @@ package com.example.bancoprueba;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +32,7 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consultar_saldo);
         getSupportActionBar().hide();
 
-        //siempre crear constructores!!!!
+
         bankCorresponsal = new CorrespondentBankUser();
         userBankClient = new UserBankClient();
 
@@ -44,18 +46,21 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 String id = buscar.getText().toString();
                 userBankClient.setId(id);
+
                 datos = new Datos(getApplicationContext());
                 datos.open();
+                SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                int saldo = prefe.getInt("saldo",0);
+                //datos.recuperarDato(bankCorresponsal);
+
                 int saldoCorresponsal = bankCorresponsal.getSaldo();
                 int nuevoSaldo;
                 if (datos.consultaUserClient(userBankClient)){
                     tvMostrarSaldo.setText(String.valueOf("saldo: " + userBankClient.getSaldo()));
                     datos.updateUserBankCopnsulta(userBankClient);
-                    nuevoSaldo = saldoCorresponsal + 1000;
+                    nuevoSaldo = saldo + 1000;
                     bankCorresponsal.setSaldo(nuevoSaldo);
                     datos.updateUserCorresponsal(bankCorresponsal);
 

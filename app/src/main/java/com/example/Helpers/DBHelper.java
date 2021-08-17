@@ -30,25 +30,4 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
 
     }
-
-
-
-
-    public boolean validateUserBankDeposito(String email) {
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        String[] column = {SQLConstants.COLUMN_BANK_ID};
-        String selection = SQLConstants.COLUMN_BANK_ID + "=?";
-        String[] selectionArgs = {email};
-        Cursor cursor = myDB.query(SQLConstants.USUARIOS_BANK, column, selection, selectionArgs,
-                null, null, null);
-        int count = cursor.getCount();
-        myDB.close();
-        cursor.close();
-        if (count > 0)
-            return true;
-        else
-            return false;
-
-
-    }
 }
