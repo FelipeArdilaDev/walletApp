@@ -46,8 +46,6 @@ public class RetiroActivity extends AppCompatActivity {
 
 
         dbHelper = new DBHelper(this);
-
-
         datos = new Datos(this);
         userBankClient = new UserBankClient();
         correspondentBankUser = new CorrespondentBankUser();
@@ -58,10 +56,6 @@ public class RetiroActivity extends AppCompatActivity {
         retirarDinero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ContentValues contentValues = new ContentValues(1);
-                contentValues.put(SQLConstants.COLUMN_BANK_SALDO,
-                        timontoRetiro.getText().toString());
 
                 String id = numberDocument.getText().toString();
                 userBankClient.setId(id);
@@ -83,9 +77,10 @@ public class RetiroActivity extends AppCompatActivity {
                 int montoRetiro;
                 montoRetiro = (retiroMonto);
 
-                int saldoC = correspondentBankUser.getSaldo();
+
                 int nuevoSaldoC;
 
+                // validar si el usuario cliente existe
                 if(datos.validateUserClient(userBankClient)){
                     Toast.makeText(getApplicationContext(), "Usuario encontrado", Toast.LENGTH_SHORT).show();
                 } else {
@@ -93,24 +88,36 @@ public class RetiroActivity extends AppCompatActivity {
                 }
 
 
+                // validar si el confimrar pin coincide con el pin de la cuenta
                 if (pin.equals(pinConfirm)){
                     Toast.makeText(RetiroActivity.this, "El pin Coincide", Toast.LENGTH_SHORT).show();
                 } else {
                     pinRetiroConfirm.setError("pin no coincide");
                 }
 
+                // validar que el usuario tiene saldo suficiente
                 if (datos.validarMontoRetiro(userBankClient)){
                     datos.open();
+
+                    //actualizar usuario cliente
                     datos.updateUserBank(userBankClient);
                     SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                    int saldo = prefe.getInt("saldo",0);
-                    onBackPressed();
-
+                    //int saldo = prefe.getInt("saldo",0);
+                    //onBackPressed();
                     //datos.recuperarDato(correspondentBankUser);
-                    nuevoSaldoC = saldo + 2000 + montoRetiro;
+
+                    //Traer del shared
+                    String correo = prefe.getString("email", "");
+                    correspondentBankUser = datos.getUserCorresponsal(correo);
+
+
+                    nuevoSaldoC = correspondentBankUser.getSaldo() + 2000 + montoRetiro;
                     correspondentBankUser.setSaldo(nuevoSaldoC);
                     datos.open();
+
+                    //actualizar usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
+                    datos.close();
 
                     Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
 
@@ -125,12 +132,6 @@ public class RetiroActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
 
 
 }

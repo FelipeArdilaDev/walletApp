@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,15 +32,31 @@ public class MenuActivity extends AppCompatActivity {
         datos = new Datos(this);
 
 
-        SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-        int saldo = prefe.getInt("saldo",0);
-        String name = prefe.getString("name","");
+        //Recuperar datos
 
-        //datos.recuperarDato(correspondentBankUser);
-        tvSaldo = findViewById(R.id.tvSaldo);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String user = prefe.getString("email","");
+        correspondentBankUser = datos.getUserCorresponsal(user);
+
+        Log.d("user", correspondentBankUser.getEmail() + correspondentBankUser.getSaldo());
+
+        datos.open();
         tvName = findViewById(R.id.tvName);
-        tvName.setText("Bienvenido: " + name);
-        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + saldo));
+        tvName.setText("Bienvenido: " + correspondentBankUser.getName());
+        tvSaldo = findViewById(R.id.tvSaldo);
+        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
+
+
+
+
+
 
     }
 

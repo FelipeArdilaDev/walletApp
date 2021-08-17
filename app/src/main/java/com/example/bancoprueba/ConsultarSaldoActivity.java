@@ -52,16 +52,25 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
                 datos = new Datos(getApplicationContext());
                 datos.open();
                 SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                int saldo = prefe.getInt("saldo",0);
+                //int saldo = prefe.getInt("saldo",0);
                 //datos.recuperarDato(bankCorresponsal);
-
-                int saldoCorresponsal = bankCorresponsal.getSaldo();
+                //int saldoCorresponsal = bankCorresponsal.getSaldo();
                 int nuevoSaldo;
+
+                // validar si el usuario cliente existe
                 if (datos.consultaUserClient(userBankClient)){
+
+                    // traer el shared
+                    SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                    String correo = prefes.getString("email", "");
+                    bankCorresponsal = datos.getUserCorresponsal(correo);
+
                     tvMostrarSaldo.setText(String.valueOf("saldo: " + userBankClient.getSaldo()));
                     datos.updateUserBankCopnsulta(userBankClient);
-                    nuevoSaldo = saldo + 1000;
+                    nuevoSaldo = bankCorresponsal.getSaldo() + 1000;
                     bankCorresponsal.setSaldo(nuevoSaldo);
+
+                    // actualizar el usuario corresponsal
                     datos.updateUserCorresponsal(bankCorresponsal);
 
                     Toast.makeText(ConsultarSaldoActivity.this, "Se encontro el usuario", Toast.LENGTH_SHORT).show();

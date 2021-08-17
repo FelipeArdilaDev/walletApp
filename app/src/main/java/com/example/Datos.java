@@ -212,6 +212,31 @@ public class Datos {
         return false;
     }
 
+    public CorrespondentBankUser getUserCorresponsal(String email) {
+
+        CorrespondentBankUser corresponal = new CorrespondentBankUser();
+
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + " = '" + email + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    corresponal.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_ID)));
+                    corresponal.setEmail(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_EMAIL)));
+                    corresponal.setSaldo(cursor.getInt(cursor.getColumnIndex(SQLConstants.COLUMN_SALDO)));
+                    corresponal.setName(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_NAME)));
+                    corresponal.setPassword(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PASSWORD)));
+                    corresponal.setPhone(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_PHONE)));
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return corresponal;
+        }
+        return corresponal;
+    }
+
     public boolean validateUserClient(UserBankClient userBankClient) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
         String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";

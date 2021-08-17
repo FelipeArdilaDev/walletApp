@@ -85,14 +85,7 @@ public class RegistroActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Error al registrarse contrasñas no coinciden", Toast.LENGTH_SHORT).show();
                 }
 
-                String name = usuario.getName();
-                int saldoC = usuario.getSaldo();
-                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferencias.edit();
-                editor.putString("name",name);
-                editor.putInt("saldo",saldoC);
-                editor.commit();
-                Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
+
             }
         });
 

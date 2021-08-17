@@ -139,7 +139,7 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="100dp"
                 android:backgroundTint="#0B2847"
-                android:text="Realizar Retiro"
+                android:text="Retirar dinero"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"

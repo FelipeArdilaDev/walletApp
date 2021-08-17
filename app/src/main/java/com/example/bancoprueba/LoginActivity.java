@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.Corresponsal.CorrespondentBankUser;
@@ -23,13 +24,14 @@ public class LoginActivity extends AppCompatActivity {
     Button btnIniciarSecion;
     DBHelper dbHelper;
     CorrespondentBankUser correspondentBankUser;
+    CheckBox checkBox;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
         btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
+        checkBox = findViewById(R.id.checkBox);
 
         dbHelper = new DBHelper(this);
         correspondentBankUser = new CorrespondentBankUser();
@@ -86,10 +89,20 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
+
+        if(checkBox.isChecked()){
+            String emailC = correspondentBankUser.getEmail();
+            SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferencias.edit();
+            editor.putString("email", emailC);
+            editor.commit();
+            Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+        }
+
+
+
     }
-
-
-
-
-
 }

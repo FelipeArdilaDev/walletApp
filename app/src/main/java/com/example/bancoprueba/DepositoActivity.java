@@ -57,26 +57,36 @@ public class DepositoActivity extends AppCompatActivity {
                 datos.open();
                 SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
                 int saldo = prefe.getInt("saldo",0);
+                correspondentBankUser.setSaldo(saldo);
                 //datos.recuperarDato(correspondentBankUser);
 
 
 
                 String deposito = tiMontoDeposito.getText().toString();
-                int valorComision = correspondentBankUser.getSaldo();
+
                 int saldoNuevo;
                 int montoDeposito;
                 montoDeposito = Integer.parseInt(deposito);
                 int nuevoSaldo;
 
 
+                // validar si el usuario cliente existe
                 if(datos.validateUserClientDeposito(userBankClient)){
+                    SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                    String correo = prefes.getString("email", "");
+                    correspondentBankUser = datos.getUserCorresponsal(correo);
+
+
                     nuevoSaldo = userBankClient.getSaldo() + montoDeposito;
-                    saldoNuevo = saldo - montoDeposito + 1000;
+                    saldoNuevo = correspondentBankUser.getSaldo() - montoDeposito + 1000;
+                    userBankClient.setSaldo(nuevoSaldo);
                     correspondentBankUser.setSaldo(saldoNuevo);
 
-                    userBankClient.setSaldo(nuevoSaldo);
                     datos.open();
+                    // actualizar el usuario cliente
                     datos.updateUserBank(userBankClient);
+
+                    // actualizar el usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
                     Toast.makeText(DepositoActivity.this, "Se realizo el deposito", Toast.LENGTH_SHORT).show();
                     onBackPressed();
