@@ -1,7 +1,5 @@
 package com.example.bancoprueba;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +9,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
-import com.example.SQLConstants;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     DBHelper dbHelper;
     CorrespondentBankUser correspondentBankUser;
     CheckBox checkBox;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intento);
     }
 
-    public void iniciarSesion(View v){
+    public void iniciarSesion(View v) {
         tiEmailAddress = findViewById(R.id.tiEmailAddress);
         String email = tiEmailAddress.getText().toString();
         correspondentBankUser.setEmail(email);
@@ -64,14 +62,13 @@ public class LoginActivity extends AppCompatActivity {
         Datos datos = new Datos(this);
         datos.open();
 
-        if (Datos.checkEmail(email)){
+        if (Datos.checkEmail(email)) {
             Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
         } else {
             tiEmailAddress.setError("El correo no es valido");
         }
 
-
-        if (datos.validatePassword(tiPasswordLogin)){
+        if (datos.validatePassword(tiPasswordLogin)) {
             Toast.makeText(getApplicationContext(), "Contraseña segura", Toast.LENGTH_SHORT).show();
 
 
@@ -79,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
-        if (datos.validateUserCorrespondent(correspondentBankUser)){
+        if (datos.validateUserCorrespondent(correspondentBankUser)) {
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
             intento.putExtra("email", email);
@@ -90,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
 
-        if(checkBox.isChecked()){
+        if (checkBox.isChecked()) {
             String emailC = correspondentBankUser.getEmail();
             SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferencias.edit();
@@ -101,8 +98,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
 
         }
-
-
-
     }
 }

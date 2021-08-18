@@ -1,8 +1,5 @@
 package com.example.bancoprueba;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,14 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.Corresponsal.UserBankClient;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.Corresponsal.CorrespondentBankUser;
+import com.example.Corresponsal.UserBankClient;
 import com.example.Datos;
 import com.example.Helpers.DBHelper;
-import com.example.SQLConstants;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class DepositoActivity extends AppCompatActivity {
+
     TextInputEditText tiDocument;
     TextInputEditText tiDepotiso;
     TextInputEditText tiMontoDeposito;
@@ -26,8 +25,6 @@ public class DepositoActivity extends AppCompatActivity {
     Datos datos;
     UserBankClient userBankClient;
     CorrespondentBankUser correspondentBankUser;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,6 @@ public class DepositoActivity extends AppCompatActivity {
         tiDocument = findViewById(R.id.tiDocumentDeposito);
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
         tiMontoDeposito = findViewById(R.id.tiMontoDeposito);
-
 
 
         correspondentBankUser = new CorrespondentBankUser();
@@ -53,13 +49,11 @@ public class DepositoActivity extends AppCompatActivity {
                 String id = tiDocument.getText().toString();
                 userBankClient.setId(id);
 
-                datos  = new Datos(getApplicationContext());
+                datos = new Datos(getApplicationContext());
                 datos.open();
                 SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                int saldo = prefe.getInt("saldo",0);
+                int saldo = prefe.getInt("saldo", 0);
                 correspondentBankUser.setSaldo(saldo);
-                //datos.recuperarDato(correspondentBankUser);
-
 
 
                 String deposito = tiMontoDeposito.getText().toString();
@@ -71,7 +65,7 @@ public class DepositoActivity extends AppCompatActivity {
 
 
                 // validar si el usuario cliente existe
-                if(datos.validateUserClientDeposito(userBankClient)){
+                if (datos.validateUserClientDeposito(userBankClient)) {
                     SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
                     String correo = prefes.getString("email", "");
                     correspondentBankUser = datos.getUserCorresponsal(correo);

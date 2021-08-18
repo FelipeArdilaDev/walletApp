@@ -1,15 +1,12 @@
 package com.example.bancoprueba;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
@@ -18,6 +15,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
+    private static final String KEY_ = "MY_KEY";
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^" +
+                    ".{4,10}" +
+                    "$");
     TextInputEditText name;
     TextInputEditText email;
     TextInputEditText password;
@@ -27,24 +29,12 @@ public class RegistroActivity extends AppCompatActivity {
     Button crearCuenta;
     Datos data;
 
-    private static final String KEY_ = "MY_KEY";
-
-
-    private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile("^" +
-                    ".{4,10}" +
-                    "$");
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
         data = new Datos(this);
-
-
 
 
         name = findViewById(R.id.nameUser);
@@ -67,7 +57,7 @@ public class RegistroActivity extends AppCompatActivity {
                         phone.getText().toString()
                 );
                 usuario.setSaldo(1000000);
-                if (data.validatePassword(password)){
+                if (data.validatePassword(password)) {
                     Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
 
                 } else {
@@ -88,13 +78,5 @@ public class RegistroActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
-
-
-
-
-
 }

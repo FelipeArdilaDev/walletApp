@@ -1,7 +1,5 @@
 package com.example.bancoprueba;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Corresponsal.UserBankClient;
@@ -24,8 +24,6 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
     TextView tvMostrarSaldo;
     CorrespondentBankUser bankCorresponsal;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,6 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
         tvMostrarSaldo = findViewById(R.id.tvMostrarSaldo);
         buscar = findViewById(R.id.tiConsulta);
         consultar = findViewById(R.id.consultar);
-
 
 
         consultar.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +55,7 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
                 int nuevoSaldo;
 
                 // validar si el usuario cliente existe
-                if (datos.consultaUserClient(userBankClient)){
+                if (datos.consultaUserClient(userBankClient)) {
 
                     // traer el shared
                     SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);

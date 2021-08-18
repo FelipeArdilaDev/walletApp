@@ -15,8 +15,7 @@ public class CorrespondentBankUser implements Serializable {
     private String phone;
     private int saldo;
 
-
-    public CorrespondentBankUser(String id, String name, String email, String password, String phone){
+    public CorrespondentBankUser(String id, String name, String email, String password, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -27,7 +26,6 @@ public class CorrespondentBankUser implements Serializable {
 
     public CorrespondentBankUser() {
     }
-
 
     public String getId() {
         return id;
@@ -78,28 +76,22 @@ public class CorrespondentBankUser implements Serializable {
     }
 
 
-
-    public ContentValues toValues(){
+    public ContentValues toValues() {
         ContentValues contentValues = new ContentValues(6);
-        contentValues.put(SQLConstants.COLUMN_ID,id);
-        contentValues.put(SQLConstants.COLUMN_EMAIL,email);
-        contentValues.put(SQLConstants.COLUMN_NAME,name);
-        contentValues.put(SQLConstants.COLUMN_PASSWORD,password);
-        contentValues.put(SQLConstants.COLUMN_PHONE,phone);
-        contentValues.put(SQLConstants.COLUMN_SALDO,saldo);
-
+        contentValues.put(SQLConstants.COLUMN_ID, id);
+        contentValues.put(SQLConstants.COLUMN_EMAIL, email);
+        contentValues.put(SQLConstants.COLUMN_NAME, name);
+        contentValues.put(SQLConstants.COLUMN_PASSWORD, password);
+        contentValues.put(SQLConstants.COLUMN_PHONE, phone);
+        contentValues.put(SQLConstants.COLUMN_SALDO, saldo);
         return contentValues;
     }
 
-    public ContentValues values(){
+    public ContentValues values() {
         ContentValues contentValues = new ContentValues(1);
-        contentValues.put(SQLConstants.COLUMN_SALDO,saldo);
-
+        contentValues.put(SQLConstants.COLUMN_SALDO, saldo);
         return contentValues;
     }
-
-
-
 
 
 }

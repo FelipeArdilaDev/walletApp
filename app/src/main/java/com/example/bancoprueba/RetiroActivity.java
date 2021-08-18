@@ -102,15 +102,12 @@ public class RetiroActivity extends AppCompatActivity {
                     //actualizar usuario cliente
                     datos.updateUserBank(userBankClient);
                     SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                    //int saldo = prefe.getInt("saldo",0);
-                    //onBackPressed();
-                    //datos.recuperarDato(correspondentBankUser);
 
                     //Traer del shared
                     String correo = prefe.getString("email", "");
                     correspondentBankUser = datos.getUserCorresponsal(correo);
 
-
+                    //operacion para el retiro
                     nuevoSaldoC = correspondentBankUser.getSaldo() + 2000 + montoRetiro;
                     correspondentBankUser.setSaldo(nuevoSaldoC);
                     datos.open();
