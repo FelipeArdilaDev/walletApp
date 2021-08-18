@@ -47,13 +47,13 @@ public class RegisterNewBankActivity extends AppCompatActivity {
                 String pinConfirm = passwordConfirm.getText().toString();
 
 
-
                 UserBankClient usuariosBank = new UserBankClient(
                         id.getText().toString(),
                         Integer.parseInt(saldoInicial.getText().toString()),
                         numberCount.getText().toString(),
                         password.getText().toString()
                 );
+
 
 
                 if(pin.equals(pinConfirm)) {
@@ -67,9 +67,7 @@ public class RegisterNewBankActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(RegisterNewBankActivity.this, "El pin no coincide", Toast.LENGTH_SHORT).show();
                     passwordConfirm.setError("El pin no coincide");
-
                 }
-
             }
         });
     }

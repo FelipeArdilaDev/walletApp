@@ -1,6 +1,7 @@
 package com.example.bancoprueba;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -82,8 +83,9 @@ public class DepositoActivity extends AppCompatActivity {
 
                     // actualizar el usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
-                    Toast.makeText(DepositoActivity.this, "Se realizo el deposito", Toast.LENGTH_SHORT).show();
-                    onBackPressed();
+
+                    Intent intent = new Intent(getApplicationContext(), vouhcerDepositoActivity.class);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(DepositoActivity.this, "No existe el usuario", Toast.LENGTH_SHORT).show();

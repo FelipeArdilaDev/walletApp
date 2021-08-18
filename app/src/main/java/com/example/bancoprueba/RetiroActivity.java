@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -110,13 +111,13 @@ public class RetiroActivity extends AppCompatActivity {
                     //operacion para el retiro
                     nuevoSaldoC = correspondentBankUser.getSaldo() + 2000 + montoRetiro;
                     correspondentBankUser.setSaldo(nuevoSaldoC);
-                    datos.open();
 
                     //actualizar usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
                     datos.close();
 
-                    Toast.makeText(RetiroActivity.this, "Se realizo el retiro", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), voucherRetiroActivity.class);
+                    startActivity(intent);
 
 
                 } else {

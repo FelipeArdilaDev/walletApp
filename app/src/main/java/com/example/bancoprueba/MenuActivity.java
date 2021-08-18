@@ -43,32 +43,27 @@ public class MenuActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tvName);
         tvName.setText("Bienvenido: " + correspondentBankUser.getName());
         tvSaldo = findViewById(R.id.tvSaldo);
-        tvSaldo.setText(String.valueOf("Saldo Corresponsal: " + correspondentBankUser.getSaldo()));
-
-
+        tvSaldo.setText("Saldo Corresponsal: " + correspondentBankUser.getSaldo());
+        datos.close();
     }
-
+    //iniciar actividad de registrar cuenta de cliente
     public void registerBank(View v) {
-        Intent intento = new Intent(this, RegisterNewBankActivity.class);
-        startActivity(intento);
+        Intent intent = new Intent(this, RegisterNewBankActivity.class);
+        startActivity(intent);
     }
-
+    //iniciar actividad de retirar dinero usuario cliente
     public void retirarMonto(View v) {
         Intent intent = new Intent(this, RetiroActivity.class);
         startActivity(intent);
-
     }
-
+    //iniciar actividad de consultar saldo de usuario cliente
     public void consultaDeSaldo(View v) {
         Intent intent = new Intent(this, ConsultarSaldoActivity.class);
         startActivity(intent);
     }
-
+    //iniciar actividad de depositar dinero de usuario cliente
     public void depositarDinero(View v) {
         Intent intent = new Intent(this, DepositoActivity.class);
         startActivity(intent);
-
     }
-
-
 }

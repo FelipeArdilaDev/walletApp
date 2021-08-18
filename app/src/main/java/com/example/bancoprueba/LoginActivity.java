@@ -62,12 +62,14 @@ public class LoginActivity extends AppCompatActivity {
         Datos datos = new Datos(this);
         datos.open();
 
+        //validar que el correo sea valido
         if (Datos.checkEmail(email)) {
             Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
         } else {
             tiEmailAddress.setError("El correo no es valido");
         }
 
+        //validar que la contraseña cumpla los requisitos
         if (datos.validatePassword(tiPasswordLogin)) {
             Toast.makeText(getApplicationContext(), "Contraseña segura", Toast.LENGTH_SHORT).show();
 
@@ -76,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
+        //validar que el usuario corresponsal exista en la base de datos
         if (datos.validateUserCorrespondent(correspondentBankUser)) {
             Intent intento = new Intent(this, MenuActivity.class);
             startActivity(intento);
@@ -87,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
 
+        //validar que el checkbox este presionado
         if (checkBox.isChecked()) {
             String emailC = correspondentBankUser.getEmail();
             SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
@@ -96,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
 
         } else {
+            Toast.makeText(this, "no se guardaran", Toast.LENGTH_SHORT).show();
 
         }
     }

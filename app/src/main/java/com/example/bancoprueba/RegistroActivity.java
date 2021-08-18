@@ -15,11 +15,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
-    private static final String KEY_ = "MY_KEY";
-    private static final Pattern PASSWORD_PATTERN =
-            Pattern.compile("^" +
-                    ".{4,10}" +
-                    "$");
     TextInputEditText name;
     TextInputEditText email;
     TextInputEditText password;
@@ -35,6 +30,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
         data = new Datos(this);
+
 
 
         name = findViewById(R.id.nameUser);
@@ -61,11 +57,9 @@ public class RegistroActivity extends AppCompatActivity {
                     Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(RegistroActivity.this, "Contraseña invalida", Toast.LENGTH_SHORT).show();
                     password.setError("Contraseña invalida");
                 }
                 if (passwordConfirm.equals(passwordConfirm)) {
-                    data = new Datos(getApplicationContext());
                     data.open();
                     data.insertUsuario(usuario);
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
