@@ -37,8 +37,30 @@ public class VoucherRetiroActivity extends AppCompatActivity {
         builder.append("Hora: ");
         builder.append(transaccion.getHora());
         builder.append("\n");
+        builder.append("Corresponsal: ");
+        builder.append(transaccion.getCuentaCorresponsal());
+        builder.append("\n");
+        builder.append("Cuenta principal: ");
+        builder.append(transaccion.getCuentaPrincipal());
+        builder.append("\n");
+        builder.append("Retiro: ");
+        builder.append(transaccion.getTipoTransaccion());
+        builder.append("\n");
+        builder.append("Monto del retiro: ");
+        builder.append(transaccion.getMonto());
+
+
+
+
+
+
 
 
         textViewRecibo.setText(builder.toString());
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
