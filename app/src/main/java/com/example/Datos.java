@@ -11,8 +11,10 @@ import android.widget.Toast;
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Corresponsal.UserBankClient;
 import com.example.Helpers.DBHelper;
+import com.example.modelos.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class Datos {
@@ -226,6 +228,40 @@ public class Datos {
             return false;
         }
         return false;
+    }
+
+    public boolean insertResultadoTransaccion(ResultadoTransaccion transaccion) {
+        ContentValues values = transaccion.toValues();
+        long insert = db.insert(SQLConstants.RESULTADO_TRANSACCION, null, values);
+        db.close();
+        return insert != -1;
+    }
+
+    public ArrayList<ResultadoTransaccion> getAllResultadosTransaccion() {
+        ArrayList<ResultadoTransaccion> transacciones = new ArrayList<>();
+
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.RESULTADO_TRANSACCION + ";";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    ResultadoTransaccion transaccion = new ResultadoTransaccion();
+                    transaccion.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_ID)));
+
+                    //ponga todos
+                    transaccion.setTipoTransaccion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_TIPO)));
+                    transaccion.setMonto(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_MONTO)));
+
+                    transacciones.add(transaccion);
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return null;
+        }
+        return transacciones;
+
     }
 }
 

@@ -84,7 +84,7 @@ public class DepositoActivity extends AppCompatActivity {
                     // actualizar el usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
 
-                    Intent intent = new Intent(getApplicationContext(), vouhcerDepositoActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), VouhcerDepositoActivity.class);
                     startActivity(intent);
 
                 } else {

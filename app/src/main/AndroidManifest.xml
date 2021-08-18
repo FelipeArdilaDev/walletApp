@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
-        <activity android:name=".vouhcerDepositoActivity"></activity>
-        <activity android:name=".voucherRetiroActivity" />
+        <activity
+            android:name=".historial.HistorialTransaccionesActivity"
+            android:exported="true" />
+        <activity android:name=".VouhcerDepositoActivity" />
+        <activity android:name=".VoucherRetiroActivity" />
         <activity android:name=".DepositoActivity" />
         <activity android:name=".ConsultarSaldoActivity" />
         <activity android:name=".RetiroActivity" />

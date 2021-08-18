@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/Locales/pruebaBank/app/src/main/res/layout/activity_historial_transacciones.xml" value="0.24010416666666667" />
+        <entry key="..\:/AndroidProjects/Locales/pruebaBank/app/src/main/res/layout/activity_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Locales/pruebaBank/app/src/main/res/layout/activity_voucher_retiro.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/Locales/pruebaBank/app/src/main/res/layout/item_historial.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pipea/Desktop/BancoPrueba/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Desktop/BancoPrueba/app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="..\:/Users/pipea/Desktop/BancoPrueba/app/src/main/res/layout/activity_register_new_bank.xml" value="0.13489583333333333" />

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Datos;
+import com.example.bancoprueba.historial.HistorialTransaccionesActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -65,5 +66,9 @@ public class MenuActivity extends AppCompatActivity {
     public void depositarDinero(View v) {
         Intent intent = new Intent(this, DepositoActivity.class);
         startActivity(intent);
+    }
+
+    public void historialTransacciones(View view) {
+        startActivity(new Intent(this, HistorialTransaccionesActivity.class));
     }
 }

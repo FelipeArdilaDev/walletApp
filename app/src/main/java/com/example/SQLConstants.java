@@ -8,7 +8,7 @@ public class SQLConstants {
     public static final String DB = "usuarios.db";
 
     public static final String TABLE_USUARIOS = "usuarios";
-    public static final String COLUMN_ID ="id";
+    public static final String COLUMN_ID = "id";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_PHONE = "phone";
@@ -17,7 +17,7 @@ public class SQLConstants {
 
     public static final String SQL_CREATE_TABLE_USUARIOS =
             "CREATE TABLE " + TABLE_USUARIOS + " " +
-                   "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_NAME + " TEXT, " +
                     COLUMN_PHONE + " TEXT, " +
                     COLUMN_EMAIL + " TEXT, " +
@@ -47,11 +47,36 @@ public class SQLConstants {
 
     public static final String SEARCH_BY_ID = "id=?";
 
+    //Resultados Transaccion
+    public static final String RESULTADO_TRANSACCION = "resultado_transaccion";
+    public static final String COLUMN_TRANSACCION_ID = "id";
+    public static final String COLUMN_TRANSACCION_TIPO = "tipo";
+    public static final String COLUMN_TRANSACCION_FECHA = "fecha";
+    public static final String COLUMN_TRANSACCION_HORA = "hora";
+    public static final String COLUMN_TRANSACCION_MONTO = "monto";
+    public static final String COLUMN_TRANSACCION_CUENTAPRINCIPAL = "cuenta_principal";
+    public static final String COLUMN_TRANSACCION_CUENTASECUNDARIA = "cuenta_secundaria";
+    public static final String COLUMN_TRANSACCION_CUENTACORRESPONSAL = "cuenta_corresponsal";
+
+    public static final String SQL_CREATE_TABLE_RESULTADO_TRANSACCION =
+            "CREATE TABLE " + RESULTADO_TRANSACCION + " " +
+                    "(" + COLUMN_TRANSACCION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_TRANSACCION_TIPO + " TEXT, " +
+                    COLUMN_TRANSACCION_FECHA + " TEXT, " +
+                    COLUMN_TRANSACCION_HORA + " TEXT, " +
+                    COLUMN_TRANSACCION_MONTO + " TEXT, " +
+                    COLUMN_TRANSACCION_CUENTAPRINCIPAL + " TEXT, " +
+                    COLUMN_TRANSACCION_CUENTASECUNDARIA + " TEXT, " +
+                    COLUMN_TRANSACCION_CUENTACORRESPONSAL + " TEXT " + ");";
+
+    public static final String SQL_TRANSACCION_DELETE =
+            "DROP TABLE " + RESULTADO_TRANSACCION;
+
 
     public SQLConstants(Context context) {
     }
 
-    public static final String[] BANK_COLUMN = {COLUMN_BANK_ID,COLUMN_BANK_SALDO,COLUMN_BANK_NUMBER_COUNT,COLUMN_BANK_PASSWORD};
+    public static final String[] BANK_COLUMN = {COLUMN_BANK_ID, COLUMN_BANK_SALDO, COLUMN_BANK_NUMBER_COUNT, COLUMN_BANK_PASSWORD};
 }
 
 
