@@ -1,5 +1,6 @@
 package com.example.bancoprueba.historial;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import com.example.modelos.ResultadoTransaccion;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 public class HistorialTransaccionesAdaptador extends RecyclerView.Adapter<HistorialTransaccionesAdaptador.ViewHolder>{
@@ -37,6 +40,7 @@ public class HistorialTransaccionesAdaptador extends RecyclerView.Adapter<Histor
         ResultadoTransaccion transaccion = transaccions.get(position);
         holder.tvTituloTrx.setText(transaccion.getTipoTransaccion());
         holder.tvMontoTrx.setText(formatMoneda(transaccion.getMonto()));
+        holder.tvFechaTrx.setText(transaccion.getFecha());
     }
 
     @Override
@@ -54,6 +58,8 @@ public class HistorialTransaccionesAdaptador extends RecyclerView.Adapter<Histor
             super(itemView);
             tvTituloTrx = itemView.findViewById(R.id.tvTituloTrx);
             tvMontoTrx = itemView.findViewById(R.id.tvMontoTrx);
+            tvFechaTrx = itemView.findViewById(R.id.tvFechaTrx);
+
         }
     }
 

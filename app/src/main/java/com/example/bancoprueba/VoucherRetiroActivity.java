@@ -1,9 +1,14 @@
 package com.example.bancoprueba;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.modelos.ResultadoTransaccion;
 
@@ -49,18 +54,39 @@ public class VoucherRetiroActivity extends AppCompatActivity {
         builder.append("Monto del retiro: ");
         builder.append(transaccion.getMonto());
 
-
-
-
-
-
-
-
         textViewRecibo.setText(builder.toString());
     }
 
     @Override
     public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Realmente desea salir sin enviar los datos de la transaccion?");
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(VoucherRetiroActivity.this, "Has finalizado la transaccion sin enviar", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(VoucherRetiroActivity.this, "Continue con la transaccion", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
+    }
+
+    public void salirMenu(View v){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void enviarWhatsapp(View v) {
+        Intent sendIntent = new Intent(); sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,  textViewRecibo.getText().toString());
+        sendIntent.setType("text/plain");
+        sendIntent.setPackage("com.whatsapp");
+        startActivity(sendIntent);
 
     }
 }

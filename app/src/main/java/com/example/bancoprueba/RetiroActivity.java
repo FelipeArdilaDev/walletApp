@@ -120,7 +120,6 @@ public class RetiroActivity extends AppCompatActivity {
                     datos.updateUserCorresponsal(correspondentBankUser);
                     datos.close();
 
-
                     //Crear objeto ResultadoTransaccion
                     crearResultadoTransaccion();
 

@@ -248,10 +248,14 @@ public class Datos {
                 while (cursor.moveToNext()) {
                     ResultadoTransaccion transaccion = new ResultadoTransaccion();
                     transaccion.setId(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_ID)));
-
-                    //ponga todos
                     transaccion.setTipoTransaccion(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_TIPO)));
                     transaccion.setMonto(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_MONTO)));
+                    transaccion.setCuentaCorresponsal(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_CUENTACORRESPONSAL)));
+                    transaccion.setCuentaPrincipal(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_CUENTAPRINCIPAL)));
+                    transaccion.setCuentaSecundaria(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_CUENTASECUNDARIA)));
+                    transaccion.setFecha(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_FECHA)));
+                    transaccion.setHora(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_HORA)));
+
 
                     transacciones.add(transaccion);
                 }

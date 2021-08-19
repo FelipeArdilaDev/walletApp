@@ -48,9 +48,10 @@
             android:layout_above="@+id/btnSalir"
             android:layout_centerInParent="true"
             android:layout_marginBottom="15dp"
-            android:text="Enviar por Whatsapp"
             android:drawableEnd="@drawable/ic_baseline_send_24"
-            android:drawableTint="@color/white"/>
+            android:drawableTint="@color/white"
+            android:onClick="enviarWhatsapp"
+            android:text="Enviar por Whatsapp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalir"
@@ -59,6 +60,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginBottom="25dp"
+            android:onClick="salirMenu"
             android:text="salir" />
 
 

@@ -1,0 +1,9 @@
+
+>
+java:S1604,"(Make this anonymous inner class a lambda(˜ÈÜ
+^
+java:S2583>"CChange this condition so that it does not always evaluate to "true"(×ÕÆ®ýÿÿÿÿ
+O
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ
+`
+java:S1764>"ECorrect one of the identical sub-expressions on both sides of equals.(×ÕÆ®ýÿÿÿÿ

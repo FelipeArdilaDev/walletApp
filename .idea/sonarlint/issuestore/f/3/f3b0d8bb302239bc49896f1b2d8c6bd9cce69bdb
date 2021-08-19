@@ -1,0 +1,17 @@
+
+i
+java:S1104"NMake id a static final constant or non-public and provide accessors if needed.(Â¥Šˆøÿÿÿÿ
+v
+java:S1104"[Make tipoTransaccion a static final constant or non-public and provide accessors if needed.(•ÑûØúÿÿÿÿ
+l
+java:S1104"QMake fecha a static final constant or non-public and provide accessors if needed.(Â‡±ùÿÿÿÿ
+k
+java:S1104"PMake hora a static final constant or non-public and provide accessors if needed.(äîæÊûÿÿÿÿ
+l
+java:S1104"QMake monto a static final constant or non-public and provide accessors if needed.(Éşƒ®şÿÿÿÿ
+v
+java:S1104"[Make cuentaPrincipal a static final constant or non-public and provide accessors if needed.(‰Êüˆıÿÿÿÿ
+q
+java:S1104"\Make cuentaSecundaria a static final constant or non-public and provide accessors if needed.(‡æ™b
+y
+java:S1104"^Make cuentaCorresponsal a static final constant or non-public and provide accessors if needed.(¬«¸âùÿÿÿÿ
