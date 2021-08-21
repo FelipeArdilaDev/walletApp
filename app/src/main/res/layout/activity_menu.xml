@@ -21,14 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="32dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Transacciones"
                 android:textColor="#0B2847"
-                android:textSize="30sp" />
+                android:textSize="40sp" />
 
             <TextView
                 android:id="@+id/tvName"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="32dp"
                 android:fontFamily="sans-serif-black"
                 android:gravity="start"
                 android:text="TextView"
@@ -79,7 +79,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:src="@drawable/ic_retiro" />
@@ -102,8 +102,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/consultaSaldoCard"
                 android:layout_width="match_parent"
@@ -118,7 +116,8 @@
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMensaje">
+                app:layout_constraintTop_toBottomOf="@+id/tvMensaje"
+                tools:ignore="DuplicateClickableBoundsCheck">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -130,7 +129,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:src="@drawable/ic_operador" />
@@ -178,7 +177,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:src="@drawable/ic_depositar" />
@@ -200,7 +199,6 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/CrearCuentaCard"
                 android:layout_width="match_parent"
@@ -215,7 +213,8 @@
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMensaje">
+                app:layout_constraintTop_toBottomOf="@+id/tvMensaje"
+                tools:ignore="DuplicateClickableBoundsCheck">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -227,7 +226,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:src="@drawable/ic_agregar" />
@@ -249,6 +248,8 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/historial"
                 android:layout_width="match_parent"
@@ -264,7 +265,8 @@
                 app:cardCornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvMensaje">
+                app:layout_constraintTop_toBottomOf="@+id/tvMensaje"
+                tools:ignore="DuplicateClickableBoundsCheck">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -276,7 +278,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
                         android:src="@drawable/ic_baseline_history_24" />
@@ -289,7 +291,7 @@
                         android:foregroundGravity="center"
                         android:gravity="center_vertical"
                         android:padding="25dp"
-                        android:text="Historial Transacciones"
+                        android:text="Transacciones"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         android:textColor="@android:color/white" />
 

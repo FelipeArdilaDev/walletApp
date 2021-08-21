@@ -12,14 +12,14 @@ import android.widget.Toast;
 
 import com.example.modelos.ResultadoTransaccion;
 
-public class VoucherRetiroActivity extends AppCompatActivity {
+public class VoucherActivity extends AppCompatActivity {
 
     TextView textViewRecibo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_voucher_retiro);
+        setContentView(R.layout.activity_voucher);
         getSupportActionBar().hide();
 
         textViewRecibo = findViewById(R.id.textViewRecibo);
@@ -34,8 +34,10 @@ public class VoucherRetiroActivity extends AppCompatActivity {
     private void crearRecibo(ResultadoTransaccion transaccion) {
         StringBuilder builder = new StringBuilder();
 
+        builder.append("\n");
         builder.append("TRANSACCION EXITOSA");
         builder.append("\n"); //Codigo Regex para salto de linea
+        builder.append("\n");
         builder.append("Fecha: ");
         builder.append(transaccion.getFecha());
         builder.append("\n");
@@ -48,10 +50,10 @@ public class VoucherRetiroActivity extends AppCompatActivity {
         builder.append("Cuenta principal: ");
         builder.append(transaccion.getCuentaPrincipal());
         builder.append("\n");
-        builder.append("Retiro: ");
+        builder.append("Tipo de transaccion: ");
         builder.append(transaccion.getTipoTransaccion());
         builder.append("\n");
-        builder.append("Monto del retiro: ");
+        builder.append("Monto de la transaccion: ");
         builder.append(transaccion.getMonto());
 
         textViewRecibo.setText(builder.toString());
@@ -64,13 +66,15 @@ public class VoucherRetiroActivity extends AppCompatActivity {
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(VoucherRetiroActivity.this, "Has finalizado la transaccion sin enviar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VoucherActivity.this, "Has finalizado la transaccion sin enviar", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(VoucherRetiroActivity.this, "Continue con la transaccion", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VoucherActivity.this, "Continue con la transaccion", Toast.LENGTH_SHORT).show();
             }
         });
         builder.create().show();

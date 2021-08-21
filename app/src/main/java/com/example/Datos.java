@@ -116,6 +116,28 @@ public class Datos {
         return false;
     }
 
+    public boolean validarMontoTx(UserBankClient userBankClient) {
+        SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        Cursor cursor = db.rawQuery(query, null);
+        try {
+            if (cursor.getCount() != 0) {
+                while (cursor.moveToNext()) {
+                    int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+                    if (userBankClient.getSaldo() < valor) {
+                        int transferencia = valor - userBankClient.getSaldo();
+                        userBankClient.setSaldo(transferencia);
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.toString();
+            return false;
+        }
+        return false;
+    }
+
 
     public boolean validateUserCorrespondent(CorrespondentBankUser correspondentBankUser) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
@@ -137,6 +159,7 @@ public class Datos {
         }
         return false;
     }
+
 
     public CorrespondentBankUser getUserCorresponsal(String email) {
 

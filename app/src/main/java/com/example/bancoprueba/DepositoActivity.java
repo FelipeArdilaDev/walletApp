@@ -87,6 +87,10 @@ public class DepositoActivity extends AppCompatActivity {
                     // actualizar el usuario cliente
                     datos.updateUserBank(userBankClient);
 
+                    //Traer del shared
+                    correoCorresponsal = prefe.getString("email", "");
+                    correspondentBankUser = datos.getUserCorresponsal(correoCorresponsal);
+
                     // actualizar el usuario corresponsal
                     datos.updateUserCorresponsal(correspondentBankUser);
 
@@ -104,7 +108,7 @@ public class DepositoActivity extends AppCompatActivity {
 
     private void crearResultadoTransaccion() {
         ResultadoTransaccion resultadoTransaccion = new ResultadoTransaccion();
-        resultadoTransaccion.setTipoTransaccion("Deposito");
+        resultadoTransaccion.setTipoTransaccion("DEPOSITO");
         resultadoTransaccion.setFecha(getFechaActual());
         resultadoTransaccion.setHora(getHoraActual());
         resultadoTransaccion.setMonto(tiMontoDeposito.getText().toString());
@@ -114,7 +118,7 @@ public class DepositoActivity extends AppCompatActivity {
         datos.open();
 
         if (datos.insertResultadoTransaccion(resultadoTransaccion)) {
-            Intent intent = new Intent(getApplicationContext(), VoucherRetiroActivity.class);
+            Intent intent = new Intent(getApplicationContext(), VoucherActivity.class);
             intent.putExtra("ResultadoTransaccion", resultadoTransaccion);
             startActivity(intent);
         } else {

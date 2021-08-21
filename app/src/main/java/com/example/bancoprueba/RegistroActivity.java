@@ -44,6 +44,10 @@ public class RegistroActivity extends AppCompatActivity {
         crearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String pin = password.getText().toString();
+                String pinConfirm = passwordConfirm.getText().toString();
+                String emailR = email.getText().toString();
+
                 CorrespondentBankUser usuario;
                 usuario = new CorrespondentBankUser(
                         id.getText().toString(),
@@ -53,20 +57,26 @@ public class RegistroActivity extends AppCompatActivity {
                         phone.getText().toString()
                 );
                 usuario.setSaldo(1000000);
-                if (data.validatePassword(password)) {
-                    Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    password.setError("Contraseña invalida");
-                }
-                if (passwordConfirm.equals(passwordConfirm)) {
+                if (Datos.checkEmail(emailR)) {
                     data.open();
                     data.insertUsuario(usuario);
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Correo valido", Toast.LENGTH_SHORT).show();
+                } else {
+                    email.setError("El correo no es valido");
+                }
+
+                if (data.validatePassword(password)) {
+                    Toast.makeText(RegistroActivity.this, "Contraseña Segura", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    password.setError("Contraseña muy debil");
+                }
+                if (pinConfirm.equals(pin)) {
                     Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error al registrarse contrasñas no coinciden", Toast.LENGTH_SHORT).show();
+                    passwordConfirm.setError("Error al registrarse contrasñas no coinciden");
                 }
 
 

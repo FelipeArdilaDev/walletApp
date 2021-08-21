@@ -12,8 +12,7 @@
         <activity
             android:name=".historial.HistorialTransaccionesActivity"
             android:exported="true" />
-        <activity android:name=".VouhcerDepositoActivity" />
-        <activity android:name=".VoucherRetiroActivity" />
+        <activity android:name=".VoucherActivity" />
         <activity android:name=".DepositoActivity" />
         <activity android:name=".ConsultarSaldoActivity" />
         <activity android:name=".RetiroActivity" />

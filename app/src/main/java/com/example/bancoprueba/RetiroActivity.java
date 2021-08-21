@@ -19,7 +19,6 @@ import com.example.modelos.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class RetiroActivity extends AppCompatActivity {
@@ -47,7 +46,6 @@ public class RetiroActivity extends AppCompatActivity {
         timontoRetiro = findViewById(R.id.timontoRetiro);
         numberDocument = findViewById(R.id.numberDocument);
         pinRetiro = findViewById(R.id.pinRetiro);
-
         pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
 
 
@@ -124,7 +122,7 @@ public class RetiroActivity extends AppCompatActivity {
                     crearResultadoTransaccion();
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Saldo insuficiente", Toast.LENGTH_SHORT).show();
+                    timontoRetiro.setError("Saldo insuficiente");
                 }
             }
 
@@ -146,7 +144,7 @@ public class RetiroActivity extends AppCompatActivity {
         datos.open();
 
         if (datos.insertResultadoTransaccion(resultadoTransaccion)) {
-            Intent intent = new Intent(getApplicationContext(), VoucherRetiroActivity.class);
+            Intent intent = new Intent(getApplicationContext(), VoucherActivity.class);
             intent.putExtra("ResultadoTransaccion", resultadoTransaccion);
             startActivity(intent);
         } else {

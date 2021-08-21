@@ -68,7 +68,9 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //iniciar actividad de historial de transacciones
     public void historialTransacciones(View view) {
         startActivity(new Intent(this, HistorialTransaccionesActivity.class));
     }
+
 }
