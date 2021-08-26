@@ -57,12 +57,19 @@ public class RegistroActivity extends AppCompatActivity {
                         phone.getText().toString()
                 );
                 usuario.setSaldo(1000000);
+
+
+                if (emailR.equals("") && pin.equals("") && pinConfirm.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
+                }
+
+
                 if (Datos.checkEmail(emailR)) {
                     data.open();
                     data.insertUsuario(usuario);
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Correo valido", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Se agrego el usuario", Toast.LENGTH_SHORT).show();
                 } else {
                     email.setError("El correo no es valido");
                 }
@@ -74,7 +81,7 @@ public class RegistroActivity extends AppCompatActivity {
                     password.setError("Contraseña muy debil");
                 }
                 if (pinConfirm.equals(pin)) {
-                    Toast.makeText(RegistroActivity.this, "Se agrego el usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "El pin coincde", Toast.LENGTH_SHORT).show();
                 } else {
                     passwordConfirm.setError("Error al registrarse contrasñas no coinciden");
                 }

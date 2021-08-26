@@ -182,7 +182,4 @@ public class RetiroActivity extends AppCompatActivity {
         return fecha;
 
     }
-    //ssss
-
-
 }
