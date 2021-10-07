@@ -23,7 +23,6 @@ public class Datos {
             Pattern.compile("^" +
                     ".{4,20}" +
                     "$");
-    public CorrespondentBankUser correspondentBankUser;
     public Context context;
     public SQLiteDatabase db;
     public SQLiteOpenHelper sqLiteOpenHelper;

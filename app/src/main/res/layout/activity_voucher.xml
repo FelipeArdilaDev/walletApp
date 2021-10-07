@@ -32,14 +32,14 @@
 
         <TextView
             android:id="@+id/textViewRecibo"
-            android:layout_width="349dp"
-            android:layout_height="354dp"
+            android:layout_width="356dp"
+            android:layout_height="434dp"
             android:layout_above="@+id/btnEnviarWhatsapp"
             android:layout_below="@id/view"
             android:layout_marginStart="32dp"
             android:layout_marginTop="72dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="115dp"
+            android:layout_marginBottom="35dp"
             android:background="#FFFFFF"
             android:text="Hola esto es una prueba\nPrueba de Saldo de linea"
             android:textAlignment="center"
@@ -53,11 +53,12 @@
             android:layout_alignStart="@+id/textViewRecibo"
             android:layout_alignEnd="@+id/view"
             android:layout_alignBottom="@+id/textViewRecibo"
+            android:layout_centerInParent="true"
             android:layout_marginStart="106dp"
             android:layout_marginEnd="86dp"
             android:layout_marginBottom="-24dp"
             android:foregroundGravity="center"
-            app:srcCompat="@drawable/ic_comprobado" />
+            app:srcCompat="@drawable/comprobado" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEnviarWhatsapp"
