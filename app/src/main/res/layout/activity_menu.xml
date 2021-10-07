@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".views.MenuActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -82,7 +82,7 @@
                         android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
-                        android:src="@drawable/ic_retiro" />
+                        app:srcCompat="@drawable/ic_retiro" />
 
                     <TextView
                         android:id="@+id/tvRetiro"
@@ -132,7 +132,7 @@
                         android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
-                        android:src="@drawable/ic_operador" />
+                        app:srcCompat="@drawable/ic_operador" />
 
                     <TextView
                         android:id="@+id/tvConulstaSaldo"
@@ -180,7 +180,7 @@
                         android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
-                        android:src="@drawable/ic_depositar" />
+                        app:srcCompat="@drawable/ic_depositar" />
 
                     <TextView
                         android:id="@+id/tvDeposito"
@@ -229,7 +229,7 @@
                         android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
-                        android:src="@drawable/ic_agregar" />
+                        app:srcCompat="@drawable/ic_agregar" />
 
                     <TextView
                         android:id="@+id/tvCrearCuenta"
@@ -281,7 +281,7 @@
                         android:layout_marginStart="10dp"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
-                        android:src="@drawable/ic_baseline_history_24" />
+                        app:srcCompat="@drawable/ic_baseline_history_24" />
 
                     <TextView
                         android:id="@+id/tvHistorial"

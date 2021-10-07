@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F3F2F2"
     android:orientation="vertical"
-    tools:context=".VoucherActivity">
+    tools:context=".views.VoucherActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:layout_marginEnd="86dp"
             android:layout_marginBottom="-24dp"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_comprobado" />
+            app:srcCompat="@drawable/ic_comprobado" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEnviarWhatsapp"
@@ -69,7 +69,8 @@
             android:drawableEnd="@drawable/ic_baseline_send_24"
             android:drawableTint="@color/white"
             android:onClick="enviarWhatsapp"
-            android:text="Enviar por Whatsapp" />
+            android:text="Enviar por Whatsapp"
+            android:textColor="@color/white"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalir"
@@ -79,7 +80,8 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="25dp"
             android:onClick="salirMenu"
-            android:text="salir" />
+            android:text="salir"
+            android:textColor="@color/white"/>
 
 
     </RelativeLayout>

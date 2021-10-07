@@ -1,17 +1,16 @@
-package com.example;
+package com.example.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Corresponsal.UserBankClient;
 import com.example.Helpers.DBHelper;
-import com.example.modelos.ResultadoTransaccion;
+import com.example.Helpers.SQLConstants;
+import com.example.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

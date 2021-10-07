@@ -1,12 +1,12 @@
-package com.example.modelos;
+package com.example.models;
 
 import android.content.ContentValues;
 
-import com.example.SQLConstants;
+import com.example.Helpers.SQLConstants;
 
 import java.io.Serializable;
 
-public class ResultadoTransaccion implements Serializable {
+public class  ResultadoTransaccion implements Serializable {
 
     public String id;
     public String tipoTransaccion;

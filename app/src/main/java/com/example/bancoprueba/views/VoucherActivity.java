@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.modelos.ResultadoTransaccion;
+import com.example.bancoprueba.R;
+import com.example.models.ResultadoTransaccion;
 
 public class VoucherActivity extends AppCompatActivity {
 
@@ -58,6 +59,7 @@ public class VoucherActivity extends AppCompatActivity {
 
         textViewRecibo.setText(builder.toString());
     }
+
 
     @Override
     public void onBackPressed() {

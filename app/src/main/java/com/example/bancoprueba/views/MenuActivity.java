@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
-import com.example.Datos;
+import com.example.utils.Datos;
+import com.example.bancoprueba.R;
 import com.example.bancoprueba.historial.HistorialTransaccionesActivity;
 
 public class MenuActivity extends AppCompatActivity {
@@ -47,6 +48,7 @@ public class MenuActivity extends AppCompatActivity {
         tvSaldo.setText("Saldo Corresponsal: " + correspondentBankUser.getSaldo());
         datos.close();
     }
+
     //iniciar actividad de registrar cuenta de cliente
     public void registerBank(View v) {
         Intent intent = new Intent(this, RegisterNewBankActivity.class);

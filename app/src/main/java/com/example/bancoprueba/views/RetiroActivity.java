@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +13,10 @@ import android.widget.Toast;
 
 import com.example.Corresponsal.UserBankClient;
 import com.example.Corresponsal.CorrespondentBankUser;
-import com.example.Datos;
+import com.example.utils.Datos;
 import com.example.Helpers.DBHelper;
-import com.example.modelos.ResultadoTransaccion;
+import com.example.bancoprueba.R;
+import com.example.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;

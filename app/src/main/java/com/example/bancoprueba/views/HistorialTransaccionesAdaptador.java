@@ -1,6 +1,5 @@
-package com.example.bancoprueba.historial;
+package com.example.bancoprueba.views;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bancoprueba.R;
-import com.example.modelos.ResultadoTransaccion;
+import com.example.models.ResultadoTransaccion;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
 
-public class HistorialTransaccionesAdaptador extends RecyclerView.Adapter<HistorialTransaccionesAdaptador.ViewHolder>{
+public class HistorialTransaccionesAdaptador extends RecyclerView.Adapter<HistorialTransaccionesAdaptador.ViewHolder> {
 
     private ArrayList<ResultadoTransaccion> transaccions;
 

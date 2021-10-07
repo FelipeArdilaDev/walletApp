@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".LoginActivity">
+    android:background="#182463"
+    tools:context=".views.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
-                android:src="@drawable/bancicon" />
+                app:srcCompat="@drawable/bancicon" />
 
             <TextView
                 android:id="@+id/textView"
@@ -36,7 +36,7 @@
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Banco Corresponsal"
-                android:textColor="#0B2847"
+                android:textColor="@color/white"
                 android:textSize="28sp" />
 
             <TextView
@@ -47,7 +47,8 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="50dp"
                 android:gravity="center"
-                android:text="Bienvenido a tu corresponsal bancario inicia sesion o registrate para gestionar tu dinero" />
+                android:text="Bienvenido a tu corresponsal bancario inicia sesion o registrate para gestionar tu dinero"
+                android:textColor="@color/white" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tiConfirmarPassword"
@@ -59,17 +60,21 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email address"
-                app:boxStrokeColor="#0B2847"
+                android:textColorHint="#FBF7F7"
+                app:boxBackgroundColor="#12EDE8E8"
+                app:boxStrokeColor="#FFFFFF"
+                app:counterTextColor="@color/white"
                 app:endIconDrawable="@drawable/ic_baseline_mark_email_read_24"
                 app:endIconMode="custom"
-                app:endIconTint="#0B2847"
-                app:hintTextColor="#0B2847">
+                app:endIconTint="#FFFFFF"
+                app:hintTextColor="#FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,17 +87,21 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Contraseña"
-                app:boxStrokeColor="#0B2847"
+                android:textColorHint="#F4F2F2"
+                app:counterTextColor="@color/white"
+                app:boxBackgroundColor="#0FFFFFFF"
+                app:boxStrokeColor="#FFFFFF"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
-                app:endIconTint="#0B2847"
-                app:hintTextColor="#0B2847">
+                app:endIconTint="#FFFFFF"
+                app:hintTextColor="#FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiPasswordLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -103,11 +112,11 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="32dp"
-                android:backgroundTint="#0B2847"
+                android:backgroundTint="#4453B6"
                 android:onClick="iniciarSesion"
                 android:text="Iniciar Sesion"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="10dp" />
 
@@ -118,7 +127,8 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="50dp"
-                android:text="Recordar datos" />
+                android:text="Recordar datos"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -127,7 +137,8 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center"
-                android:text="Nuevo en esta experiencia?" />
+                android:text="Nuevo en esta experiencia?"
+                android:textColor="@color/white" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRegistrarCuenta"
@@ -139,7 +150,7 @@
                 android:onClick="registrarCuenta"
                 android:text="Registrarse"
                 android:textAllCaps="false"
-                android:textColor="#0B2847"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
         </LinearLayout>

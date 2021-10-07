@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
-import com.example.Datos;
+import com.example.utils.Datos;
+import com.example.bancoprueba.R;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
     TextInputEditText name;

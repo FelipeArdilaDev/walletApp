@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Corresponsal.UserBankClient;
-import com.example.Datos;
+import com.example.utils.Datos;
+import com.example.bancoprueba.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ConsultarSaldoActivity extends AppCompatActivity {

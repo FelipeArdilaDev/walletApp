@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
-import com.example.Datos;
+import com.example.utils.Datos;
 import com.example.Helpers.DBHelper;
+import com.example.bancoprueba.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -62,7 +63,14 @@ public class LoginActivity extends AppCompatActivity {
         Datos datos = new Datos(this);
         datos.open();
 
-        //validar que el correo sea valido
+        /** LoginActivity
+         * <p>
+         * Validar que el correo electronico tenga @ y .com
+         *
+         * Felipe Ardila
+         *
+         *
+         */
         if (Datos.checkEmail(email)) {
             Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
         } else {
@@ -100,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "no se guardaran", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "no se guardaran los datos", Toast.LENGTH_SHORT).show();
 
         }
     }

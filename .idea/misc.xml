@@ -13,14 +13,19 @@
         <entry key="..\:/Users/pipea/Desktop/BancoPrueba/app/src/main/res/layout/activity_retiro.xml" value="0.18" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_consultar_saldo.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_deposito.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_historial.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_historial_transacciones.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_menu.xml" value="0.264" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_register_new_bank.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_registro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_retiro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_transferencia.xml" value="0.25" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_voucher.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_voucher_retiro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/activity_vouhcer_deposito.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/fragment_deposito.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/fragment_retiro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pipea/Documents/GitHub/pruebaBank/app/src/main/res/layout/item_historial.xml" value="0.20416666666666666" />
       </map>
     </option>

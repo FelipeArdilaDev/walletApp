@@ -1,4 +1,4 @@
-package com.example;
+package com.example.Helpers;
 
 import android.content.Context;
 

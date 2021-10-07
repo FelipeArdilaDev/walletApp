@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.Datos;
+import com.example.utils.Datos;
 import com.example.bancoprueba.R;
-import com.example.modelos.ResultadoTransaccion;
+import com.example.bancoprueba.views.HistorialTransaccionesAdaptador;
+import com.example.models.ResultadoTransaccion;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class HistorialTransaccionesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_transacciones);
+        getSupportActionBar().setTitle("Historial Transacciones");
 
         rvTransacciones = findViewById(R.id.rvTransacciones);
         datos = new Datos(this);

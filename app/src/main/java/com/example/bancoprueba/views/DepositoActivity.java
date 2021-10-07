@@ -1,4 +1,4 @@
-package com.example.bancoprueba;
+package com.example.bancoprueba.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Corresponsal.CorrespondentBankUser;
 import com.example.Corresponsal.UserBankClient;
-import com.example.Datos;
+import com.example.utils.Datos;
 import com.example.Helpers.DBHelper;
-import com.example.modelos.ResultadoTransaccion;
+import com.example.bancoprueba.R;
+import com.example.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -82,7 +83,6 @@ public class DepositoActivity extends AppCompatActivity {
                     saldoNuevo = correspondentBankUser.getSaldo() - montoDeposito + 1000;
                     userBankClient.setSaldo(nuevoSaldo);
                     correspondentBankUser.setSaldo(saldoNuevo);
-
                     datos.open();
                     // actualizar el usuario cliente
                     datos.updateUserBank(userBankClient);
@@ -100,10 +100,8 @@ public class DepositoActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(DepositoActivity.this, "No existe el usuario", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
     }
 
     private void crearResultadoTransaccion() {
@@ -124,7 +122,6 @@ public class DepositoActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error al guardar Resultado Transaccion", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private String getHoraActual() {

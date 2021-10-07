@@ -2,9 +2,7 @@ package com.example.Corresponsal;
 
 import android.content.ContentValues;
 
-import com.example.SQLConstants;
-
-import java.io.Serializable;
+import com.example.Helpers.SQLConstants;
 
 public class UserBankClient {
 

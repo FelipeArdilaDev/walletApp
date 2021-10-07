@@ -10,17 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
         <activity
+            android:name=".historial.HistorialActivity"
+            android:exported="true" />
+        <activity
             android:name=".historial.HistorialTransaccionesActivity"
             android:exported="true" />
-        <activity android:name=".VoucherActivity" />
-        <activity android:name=".DepositoActivity" />
-        <activity android:name=".ConsultarSaldoActivity" />
-        <activity android:name=".RetiroActivity" />
-        <activity android:name=".RegisterNewBankActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".RegistroActivity" />
+        <activity android:name=".views.VoucherActivity" />
+        <activity android:name=".views.DepositoActivity" />
+        <activity android:name=".views.ConsultarSaldoActivity" />
+        <activity android:name=".views.RetiroActivity" />
+        <activity android:name=".views.RegisterNewBankActivity" />
+        <activity android:name=".views.MenuActivity" />
+        <activity android:name=".views.RegistroActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".views.LoginActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
