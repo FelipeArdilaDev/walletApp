@@ -10,20 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
         <activity
-            android:name=".historial.HistorialActivity"
+            android:name="com.example.view.views.HistorialActivity"
             android:exported="true" />
         <activity
-            android:name=".historial.HistorialTransaccionesActivity"
+            android:name="com.example.view.views.HistorialTransaccionesActivity"
             android:exported="true" />
-        <activity android:name=".views.VoucherActivity" />
-        <activity android:name=".views.DepositoActivity" />
-        <activity android:name=".views.ConsultarSaldoActivity" />
-        <activity android:name=".views.RetiroActivity" />
-        <activity android:name=".views.RegisterNewBankActivity" />
-        <activity android:name=".views.MenuActivity" />
-        <activity android:name=".views.RegistroActivity" />
+        <activity android:name="com.example.view.views.VoucherActivity" />
+        <activity android:name="com.example.view.views.DepositoActivity" />
+        <activity android:name="com.example.view.views.ConsultarSaldoActivity" />
+        <activity android:name="com.example.view.views.RetiroActivity" />
+        <activity android:name="com.example.view.views.RegisterNewBankActivity" />
+        <activity android:name="com.example.view.views.MainActivity" />
+        <activity android:name="com.example.view.views.RegistroActivity" />
         <activity
-            android:name=".views.LoginActivity"
+            android:name="com.example.view.views.LoginActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

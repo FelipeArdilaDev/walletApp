@@ -1,15 +1,0 @@
-
-i
-java:S1192"LDefine a constant instead of duplicating this literal "DROP TABLE " 3 times.(ÿÅÜÀ8Ã¢ñôµ/
-k
-java:S1192"NDefine a constant instead of duplicating this literal "CREATE TABLE " 3 times.(Š‘íù8Ã¢ñôµ/
-d
-java:S1192"IDefine a constant instead of duplicating this literal " TEXT, " 12 times.(¥¡‘Áøÿÿÿÿ
-i
-java:S1192"GDefine a constant instead of duplicating this literal " TEXT " 3 times.(…ú‰şùÿÿÿÿ8Ä¢ñôµ/
-‡
-java:S1192"eDefine a constant instead of duplicating this literal " INTEGER PRIMARY KEY AUTOINCREMENT, " 3 times.(øäÉöıÿÿÿÿ8Å¢ñôµ/
-8
-java:S2386O"Make this member "protected".(Áã¹Êúÿÿÿÿ
-8
-java:S1118L"Hide this public constructor.(Æ‘Éøÿÿÿÿ
