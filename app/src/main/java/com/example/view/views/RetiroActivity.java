@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.model.Helpers.models.UserBankClient;
-import com.example.model.Helpers.models.CorrespondentBankUser;
-import com.example.model.Helpers.utils.Datos;
-import com.example.model.Helpers.DBHelper;
+import com.example.model.models.UserBankClient;
+import com.example.model.models.CorrespondentBankUser;
+import com.example.model.utils.Datos;
+import com.example.model.Helpers.DBHelRepositoryImpl;
 import com.example.bancoprueba.R;
-import com.example.model.Helpers.models.ResultadoTransaccion;
+import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +29,7 @@ public class RetiroActivity extends AppCompatActivity {
     TextInputEditText pinRetiro;
     TextInputEditText pinRetiroConfirm;
     Button retirarDinero;
-    DBHelper dbHelper;
+    DBHelRepositoryImpl dbHelRepositoryImpl;
     Datos datos;
     UserBankClient userBankClient;
     CorrespondentBankUser correspondentBankUser;
@@ -50,7 +50,7 @@ public class RetiroActivity extends AppCompatActivity {
         pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
 
 
-        dbHelper = new DBHelper(this);
+        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
         datos = new Datos(this);
         userBankClient = new UserBankClient();
         correspondentBankUser = new CorrespondentBankUser();

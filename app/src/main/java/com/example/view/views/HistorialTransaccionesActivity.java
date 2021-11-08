@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.model.Helpers.utils.Datos;
+import com.example.model.utils.Datos;
 import com.example.bancoprueba.R;
-import com.example.model.Helpers.models.ResultadoTransaccion;
+import com.example.model.models.ResultadoTransaccion;
 
 import java.util.ArrayList;
 

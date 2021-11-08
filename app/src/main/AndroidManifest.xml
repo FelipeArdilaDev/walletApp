@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
         <activity
+            android:name="com.example.view.views.AccountActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.view.views.ItemMenu"
+            android:exported="true" />
+        <activity
             android:name="com.example.view.views.HistorialActivity"
             android:exported="true" />
         <activity

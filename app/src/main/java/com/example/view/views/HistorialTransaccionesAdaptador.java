@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bancoprueba.R;
-import com.example.model.Helpers.models.ResultadoTransaccion;
+import com.example.model.models.ResultadoTransaccion;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

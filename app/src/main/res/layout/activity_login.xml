@@ -60,9 +60,10 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email address"
-                android:textColorHint="#FBF7F7"
+                app:errorTextColor="@color/red_A700"
+                android:textColorHint="@color/white"
                 app:boxBackgroundColor="#12EDE8E8"
-                app:boxStrokeColor="#FFFFFF"
+                app:boxStrokeColor="@color/white"
                 app:counterTextColor="@color/white"
                 app:endIconDrawable="@drawable/ic_baseline_mark_email_read_24"
                 app:endIconMode="custom"
@@ -71,6 +72,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiEmailAddress"
+                    android:textColorHint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"

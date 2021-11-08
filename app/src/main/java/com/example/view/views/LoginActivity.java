@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.model.Helpers.models.CorrespondentBankUser;
-import com.example.model.Helpers.utils.Datos;
-import com.example.model.Helpers.DBHelper;
 import com.example.bancoprueba.R;
+import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.models.CorrespondentBankUser;
+import com.example.model.utils.Datos;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText tiEmailAddress;
     TextInputEditText tiPasswordLogin;
     Button btnIniciarSecion;
-    DBHelper dbHelper;
+    DBHelRepositoryImpl dbHelRepositoryImpl;
     CorrespondentBankUser correspondentBankUser;
     CheckBox checkBox;
 
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
         checkBox = findViewById(R.id.checkBox);
 
-        dbHelper = new DBHelper(this);
+        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
         correspondentBankUser = new CorrespondentBankUser();
     }
 
@@ -71,45 +71,39 @@ public class LoginActivity extends AppCompatActivity {
          *
          *
          */
-        if (Datos.checkEmail(email)) {
-            Toast.makeText(this, "Correo valido", Toast.LENGTH_SHORT).show();
-        } else {
+
+        if (!(!tiEmailAddress.equals("") || !tiPasswordLogin.equals(""))) {
+            tiPasswordLogin.setError("Los campos no pueden estar vacios");
+            tiEmailAddress.setError("Los campos no pueden estar vacios");
+
+        }
+        if (!Datos.checkEmail(email)) {
             tiEmailAddress.setError("El correo no es valido");
         }
 
         //validar que la contraseña cumpla los requisitos
-        if (datos.validatePassword(tiPasswordLogin)) {
-            Toast.makeText(getApplicationContext(), "Contraseña segura", Toast.LENGTH_SHORT).show();
-
-
-        } else {
+        if (!datos.validatePassword(tiPasswordLogin)) {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
         //validar que el usuario corresponsal exista en la base de datos
         if (datos.validateUserCorrespondent(correspondentBankUser)) {
-            Intent intento = new Intent(this, MainActivity.class);
+
+            if (checkBox.isChecked()) {
+                String emailC = correspondentBankUser.getEmail();
+                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putString("email", emailC);
+                editor.commit();
+            }
+
+            Intent intento = new Intent(this, ItemMenu.class);
             startActivity(intento);
             intento.putExtra("email", email);
-            //datos.guardarDato(correspondentBankUser);
-            Toast.makeText(getApplicationContext(), "Has iniciado sesion", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
 
-        //validar que el checkbox este presionado
-        if (checkBox.isChecked()) {
-            String emailC = correspondentBankUser.getEmail();
-            SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferencias.edit();
-            editor.putString("email", emailC);
-            editor.commit();
-            Toast.makeText(getApplicationContext(), "Datos grabados", Toast.LENGTH_SHORT).show();
-
-        } else {
-            Toast.makeText(this, "no se guardaran los datos", Toast.LENGTH_SHORT).show();
-
-        }
     }
 }

@@ -71,12 +71,10 @@ public class SQLConstants {
 
     public static final String SQL_TRANSACCION_DELETE =
             "DROP TABLE " + RESULTADO_TRANSACCION;
-
+    public static final String[] BANK_COLUMN = {COLUMN_BANK_ID, COLUMN_BANK_SALDO, COLUMN_BANK_NUMBER_COUNT, COLUMN_BANK_PASSWORD};
 
     public SQLConstants(Context context) {
     }
-
-    public static final String[] BANK_COLUMN = {COLUMN_BANK_ID, COLUMN_BANK_SALDO, COLUMN_BANK_NUMBER_COUNT, COLUMN_BANK_PASSWORD};
 }
 
 

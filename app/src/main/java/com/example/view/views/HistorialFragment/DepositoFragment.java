@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.model.Helpers.utils.Datos;
+import com.example.model.utils.Datos;
 import com.example.bancoprueba.R;
 import com.example.view.views.HistorialTransaccionesAdaptador;
-import com.example.model.Helpers.models.ResultadoTransaccion;
+import com.example.model.models.ResultadoTransaccion;
 
 import java.util.ArrayList;
 

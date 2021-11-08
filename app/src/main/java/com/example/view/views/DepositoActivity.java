@@ -11,12 +11,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.model.Helpers.models.CorrespondentBankUser;
-import com.example.model.Helpers.models.UserBankClient;
-import com.example.model.Helpers.utils.Datos;
-import com.example.model.Helpers.DBHelper;
+import com.example.model.models.CorrespondentBankUser;
+import com.example.model.models.UserBankClient;
+import com.example.model.utils.Datos;
+import com.example.model.Helpers.DBHelRepositoryImpl;
 import com.example.bancoprueba.R;
-import com.example.model.Helpers.models.ResultadoTransaccion;
+import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ public class DepositoActivity extends AppCompatActivity {
     TextInputEditText tiDepotiso;
     TextInputEditText tiMontoDeposito;
     Button depositar;
-    DBHelper dbHelper;
+    DBHelRepositoryImpl dbHelRepositoryImpl;
     Datos datos;
     UserBankClient userBankClient;
     CorrespondentBankUser correspondentBankUser;
@@ -47,59 +47,56 @@ public class DepositoActivity extends AppCompatActivity {
 
         correspondentBankUser = new CorrespondentBankUser();
         userBankClient = new UserBankClient();
-        dbHelper = new DBHelper(this);
+        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
 
 
         depositar = findViewById(R.id.depositar);
-        depositar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String id = tiDocument.getText().toString();
-                userBankClient.setId(id);
+        depositar.setOnClickListener(v -> {
+            String id = tiDocument.getText().toString();
+            userBankClient.setId(id);
 
-                datos = new Datos(getApplicationContext());
+            datos = new Datos(getApplicationContext());
+            datos.open();
+            SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
+            int saldo = prefe.getInt("saldo", 0);
+            correspondentBankUser.setSaldo(saldo);
+
+
+            String deposito = tiMontoDeposito.getText().toString();
+
+            int saldoNuevo;
+            int montoDeposito;
+            montoDeposito = Integer.parseInt(deposito);
+            int nuevoSaldo;
+
+
+            // validar si el usuario cliente existe
+            if (datos.validateUserClientDeposito(userBankClient)) {
+                SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                String correo = prefes.getString("email", "");
+                correspondentBankUser = datos.getUserCorresponsal(correo);
+
+
+                nuevoSaldo = userBankClient.getSaldo() + montoDeposito;
+                saldoNuevo = correspondentBankUser.getSaldo() - montoDeposito + 1000;
+                userBankClient.setSaldo(nuevoSaldo);
+                correspondentBankUser.setSaldo(saldoNuevo);
                 datos.open();
-                SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                int saldo = prefe.getInt("saldo", 0);
-                correspondentBankUser.setSaldo(saldo);
+                // actualizar el usuario cliente
+                datos.updateUserBank(userBankClient);
 
+                //Traer del shared
+                correoCorresponsal = prefe.getString("email", "");
+                correspondentBankUser = datos.getUserCorresponsal(correoCorresponsal);
 
-                String deposito = tiMontoDeposito.getText().toString();
+                // actualizar el usuario corresponsal
+                datos.updateUserCorresponsal(correspondentBankUser);
 
-                int saldoNuevo;
-                int montoDeposito;
-                montoDeposito = Integer.parseInt(deposito);
-                int nuevoSaldo;
+                //Crear objeto ResultadoTransaccion
+                crearResultadoTransaccion();
 
-
-                // validar si el usuario cliente existe
-                if (datos.validateUserClientDeposito(userBankClient)) {
-                    SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                    String correo = prefes.getString("email", "");
-                    correspondentBankUser = datos.getUserCorresponsal(correo);
-
-
-                    nuevoSaldo = userBankClient.getSaldo() + montoDeposito;
-                    saldoNuevo = correspondentBankUser.getSaldo() - montoDeposito + 1000;
-                    userBankClient.setSaldo(nuevoSaldo);
-                    correspondentBankUser.setSaldo(saldoNuevo);
-                    datos.open();
-                    // actualizar el usuario cliente
-                    datos.updateUserBank(userBankClient);
-
-                    //Traer del shared
-                    correoCorresponsal = prefe.getString("email", "");
-                    correspondentBankUser = datos.getUserCorresponsal(correoCorresponsal);
-
-                    // actualizar el usuario corresponsal
-                    datos.updateUserCorresponsal(correspondentBankUser);
-
-                    //Crear objeto ResultadoTransaccion
-                    crearResultadoTransaccion();
-
-                } else {
-                    Toast.makeText(DepositoActivity.this, "No existe el usuario", Toast.LENGTH_SHORT).show();
-                }
+            } else {
+                Toast.makeText(DepositoActivity.this, "No existe el usuario", Toast.LENGTH_SHORT).show();
             }
         });
     }

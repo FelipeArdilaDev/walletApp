@@ -3,17 +3,16 @@ package com.example.view.views;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.model.Helpers.models.CorrespondentBankUser;
-import com.example.model.Helpers.models.UserBankClient;
-import com.example.model.Helpers.utils.Datos;
 import com.example.bancoprueba.R;
+import com.example.model.models.CorrespondentBankUser;
+import com.example.model.models.UserBankClient;
+import com.example.model.utils.Datos;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ConsultarSaldoActivity extends AppCompatActivity {
@@ -40,45 +39,38 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
         consultar = findViewById(R.id.consultar);
 
 
-        consultar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        consultar.setOnClickListener(v -> {
 
-                String id = buscar.getText().toString();
-                userBankClient.setId(id);
+            String id = buscar.getText().toString();
+            userBankClient.setId(id);
 
-                datos = new Datos(getApplicationContext());
-                datos.open();
-                SharedPreferences prefe = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                //int saldo = prefe.getInt("saldo",0);
-                //datos.recuperarDato(bankCorresponsal);
-                //int saldoCorresponsal = bankCorresponsal.getSaldo();
-                int nuevoSaldo;
+            datos = new Datos(getApplicationContext());
+            datos.open();
+            int nuevoSaldo;
 
-                // validar si el usuario cliente existe
-                if (datos.consultaUserClient(userBankClient)) {
+            // validar si el usuario cliente existe
+            if (datos.consultaUserClient(userBankClient)) {
 
-                    // traer el shared
-                    SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                    String correo = prefes.getString("email", "");
-                    bankCorresponsal = datos.getUserCorresponsal(correo);
+                // traer el shared
+                SharedPreferences prefes = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                String correo = prefes.getString("email", "");
+                bankCorresponsal = datos.getUserCorresponsal(correo);
 
-                    tvMostrarSaldo.setText(String.valueOf("saldo: " + userBankClient.getSaldo()));
-                    datos.updateUserBankCopnsulta(userBankClient);
-                    nuevoSaldo = bankCorresponsal.getSaldo() + 1000;
-                    bankCorresponsal.setSaldo(nuevoSaldo);
+                tvMostrarSaldo.setText(String.valueOf("" + userBankClient.getSaldo()));
+                datos.updateUserBankCopnsulta(userBankClient);
+                nuevoSaldo = bankCorresponsal.getSaldo() + 1000;
+                bankCorresponsal.setSaldo(nuevoSaldo);
 
-                    // actualizar el usuario corresponsal
-                    datos.updateUserCorresponsal(bankCorresponsal);
+                // actualizar el usuario corresponsal
+                datos.updateUserCorresponsal(bankCorresponsal);
 
-                    Toast.makeText(ConsultarSaldoActivity.this, "Se encontro el usuario", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ConsultarSaldoActivity.this, "Se encontro el usuario", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    Toast.makeText(ConsultarSaldoActivity.this, "No se encontro el usuario", Toast.LENGTH_SHORT).show();
-                }
-
-
+            } else {
+                Toast.makeText(ConsultarSaldoActivity.this, "No se encontro el usuario", Toast.LENGTH_SHORT).show();
             }
+
+
         });
 
     }
