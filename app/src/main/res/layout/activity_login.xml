@@ -8,6 +8,7 @@
     tools:context="com.example.view.views.LoginActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -45,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="25dp"
                 android:gravity="center"
                 android:text="Bienvenido a tu corresponsal bancario inicia sesion o registrate para gestionar tu dinero"
                 android:textColor="@color/white" />
@@ -60,7 +61,6 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
                 android:hint="Email address"
-                app:errorTextColor="@color/red_A700"
                 android:textColorHint="@color/white"
                 app:boxBackgroundColor="#12EDE8E8"
                 app:boxStrokeColor="@color/white"
@@ -68,15 +68,16 @@
                 app:endIconDrawable="@drawable/ic_baseline_mark_email_read_24"
                 app:endIconMode="custom"
                 app:endIconTint="#FFFFFF"
+                app:errorTextColor="@color/red_A700"
                 app:hintTextColor="#FFFFFF">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiEmailAddress"
-                    android:textColorHint="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,9 +91,9 @@
                 android:layout_marginEnd="32dp"
                 android:hint="Contraseña"
                 android:textColorHint="#F4F2F2"
-                app:counterTextColor="@color/white"
                 app:boxBackgroundColor="#0FFFFFFF"
                 app:boxStrokeColor="#FFFFFF"
+                app:counterTextColor="@color/white"
                 app:endIconDrawable="@drawable/ic_baseline_lock_24"
                 app:endIconMode="password_toggle"
                 app:endIconTint="#FFFFFF"
@@ -103,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -115,7 +116,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="32dp"
                 android:backgroundTint="#4453B6"
-                android:onClick="iniciarSesion"
                 android:text="Iniciar Sesion"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -137,6 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="32dp"
                 android:gravity="center"
                 android:text="Nuevo en esta experiencia?"
@@ -156,6 +157,22 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#A1111A49"
+        android:backgroundTintMode="screen"
+        android:progressTint="@color/yellow_A700"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

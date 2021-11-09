@@ -1,33 +1,45 @@
 package com.example.view.views;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.bancoprueba.R;
 import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.LoginInteractorImpl;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.utils.Datos;
+import com.example.presenter.LoginPresenter;
+import com.example.presenter.LoginPresenterImpl;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
 
-    TextInputEditText tiEmailAddress;
-    TextInputEditText tiPasswordLogin;
-    Button btnIniciarSecion;
-    DBHelRepositoryImpl dbHelRepositoryImpl;
-    CorrespondentBankUser correspondentBankUser;
-    CheckBox checkBox;
+    private TextInputEditText tiEmailAddress;
+    private TextInputEditText tiPasswordLogin;
+    private DBHelRepositoryImpl dbHelRepositoryImpl;
+    private CheckBox checkBox;
+    private LoginPresenter presenter;
+    private ProgressBar progressBar;
+    private Datos datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_BancoPrueba);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         try {
             Thread.sleep(1000);
@@ -35,48 +47,51 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        setTheme(R.style.Theme_BancoPrueba);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
-        btnIniciarSecion = findViewById(R.id.btnIniciarSecion);
-        checkBox = findViewById(R.id.checkBox);
+        tiPasswordLogin       = findViewById(R.id.tiPasswordLogin);
+        tiEmailAddress        = findViewById(R.id.tiEmailAddress);
+        progressBar           = findViewById(R.id.progressBar);
+        checkBox              = findViewById(R.id.checkBox);
 
-        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
-        correspondentBankUser = new CorrespondentBankUser();
+        presenter             = new LoginPresenterImpl(this, new LoginInteractorImpl());
+        dbHelRepositoryImpl   = new DBHelRepositoryImpl(this);
+
+        findViewById(R.id.btnIniciarSecion).setOnClickListener(this);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        presenter.onDestroy();
+    }
 
     public void registrarCuenta(View v) {
-        Intent intento = new Intent(this, RegistroActivity.class);
-        startActivity(intento);
+        startActivity(new Intent(this,
+                RegistroActivity.class));
     }
 
-    public void iniciarSesion(View v) {
-        tiEmailAddress = findViewById(R.id.tiEmailAddress);
+    /** LoginActivity
+     * <p>
+     * Validar que el correo electronico tenga @ y .com
+     *
+     * Felipe Ardila
+     *
+     *
+     */
+
+    @Override
+    public void onClick(View v) {
+
+        datos = new Datos(this);
+
         String email = tiEmailAddress.getText().toString();
-        correspondentBankUser.setEmail(email);
-        tiPasswordLogin = findViewById(R.id.tiPasswordLogin);
         String password = tiPasswordLogin.getText().toString();
-        correspondentBankUser.setPassword(password);
 
-        Datos datos = new Datos(this);
-        datos.open();
 
-        /** LoginActivity
-         * <p>
-         * Validar que el correo electronico tenga @ y .com
-         *
-         * Felipe Ardila
-         *
-         *
-         */
-
-        if (!(!tiEmailAddress.equals("") || !tiPasswordLogin.equals(""))) {
+        if (!(!email.equals("") || !password.equals(""))) {
             tiPasswordLogin.setError("Los campos no pueden estar vacios");
             tiEmailAddress.setError("Los campos no pueden estar vacios");
-
         }
+
         if (!Datos.checkEmail(email)) {
             tiEmailAddress.setError("El correo no es valido");
         }
@@ -86,24 +101,89 @@ public class LoginActivity extends AppCompatActivity {
             tiPasswordLogin.setError("Contraseña muy debil");
         }
 
-        //validar que el usuario corresponsal exista en la base de datos
-        if (datos.validateUserCorrespondent(correspondentBankUser)) {
-
-            if (checkBox.isChecked()) {
-                String emailC = correspondentBankUser.getEmail();
-                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferencias.edit();
-                editor.putString("email", emailC);
-                editor.commit();
-            }
-
-            Intent intento = new Intent(this, ItemMenu.class);
-            startActivity(intento);
-            intento.putExtra("email", email);
-
-        } else {
-            Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show();
+        if (checkBox.isChecked()) {
+            SharedPreferences.Editor editor = getPreferences();
+            editor.putString("email", email);
+            editor.commit();
         }
+
+        presenter.validateCredentials(tiEmailAddress.getText().toString(),
+                tiPasswordLogin.getText().toString(), this);
+
+    }
+
+    @Override
+    public void showProgress() {
+
+        progressBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+        progressBar.setVisibility(View.GONE);
+
+    }
+
+    @Override
+    public void setUserNameError() {
+        showCustomDialog();
+
+
+    }
+
+    @Override
+    public void setPasswordError() {
+        showCustomDialog();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void navigateToHome() {
+        String email = tiEmailAddress.getText().toString();
+        Intent intento = new Intent(this, ItemMenu.class);
+        startActivity(intento);
+        intento.putExtra("email", email);
+
+
+    }
+
+    public SharedPreferences.Editor getPreferences() {
+        SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        return preferencias.edit();
+    }
+
+
+    @Override
+    public void showCustomDialog() {
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.dialog_warning);
+        dialog.setCancelable(true);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+
+        ((AppCompatButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(v -> {
+            Toast.makeText(getApplicationContext(), ((AppCompatButton) v).getText().toString()
+                    + " Clicked", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
 
     }
 }

@@ -15,13 +15,12 @@ import com.example.model.models.UserBankClient;
 import com.example.model.utils.Datos;
 import com.example.bancoprueba.R;
 
-public class MainActivity extends AppCompatActivity implements AppCorresponsal.Presenter {
+public class MainActivity extends AppCompatActivity{
 
     TextView tvSaldo;
     TextView tvName;
     CorrespondentBankUser correspondentBankUser;
     Datos datos;
-    private AppCorresponsal.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +75,4 @@ public class MainActivity extends AppCompatActivity implements AppCorresponsal.P
         startActivity(new Intent(this, HistorialTransaccionesActivity.class));
     }
 
-    @Override
-    public void login(UserBankClient userBankClient) {
-
-    }
 }

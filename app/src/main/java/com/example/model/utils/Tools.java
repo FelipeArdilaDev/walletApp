@@ -1,4 +1,4 @@
-package com.example.view.views;
+package com.example.model.utils;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -118,11 +118,6 @@ public class Tools {
         }
     }
 
-
-    public static String getFormattedDateShort(Long dateTime) {
-        SimpleDateFormat newFormat = new SimpleDateFormat("MMM dd, yyyy");
-        return newFormat.format(new Date(dateTime));
-    }
 
     public static String getFormattedDateSimple(Long dateTime) {
         SimpleDateFormat newFormat = new SimpleDateFormat("MMMM dd, yyyy");

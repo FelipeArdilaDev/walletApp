@@ -2,6 +2,7 @@ package com.example.model.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -94,12 +95,14 @@ public class Datos {
 
     public boolean validarMontoRetiro(UserBankClient userBankClient) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " +
+                SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
         Cursor cursor = db.rawQuery(query, null);
         try {
             if (cursor.getCount() != 0) {
                 while (cursor.moveToNext()) {
-                    int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+                    int valor = Integer.parseInt(cursor.getString(cursor
+                            .getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
                     if (userBankClient.getSaldo() < valor) {
                         int retiro = valor - userBankClient.getSaldo();
                         userBankClient.setSaldo(retiro);
@@ -116,12 +119,14 @@ public class Datos {
 
     public boolean validarMontoTx(UserBankClient userBankClient) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " + SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
+        String query = "SELECT * FROM " + SQLConstants.USUARIOS_BANK + " WHERE " +
+                SQLConstants.COLUMN_BANK_ID + " = '" + userBankClient.getId() + "';";
         Cursor cursor = db.rawQuery(query, null);
         try {
             if (cursor.getCount() != 0) {
                 while (cursor.moveToNext()) {
-                    int valor = Integer.parseInt(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
+                    int valor = Integer.parseInt(cursor.getString(cursor
+                            .getColumnIndex(SQLConstants.COLUMN_BANK_SALDO)));
                     if (userBankClient.getSaldo() < valor) {
                         int transferencia = valor - userBankClient.getSaldo();
                         userBankClient.setSaldo(transferencia);
@@ -139,7 +144,8 @@ public class Datos {
 
     public boolean validateUserCorrespondent(CorrespondentBankUser correspondentBankUser) {
         SQLiteDatabase db = this.sqLiteOpenHelper.getReadableDatabase();
-        String query = "SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " + SQLConstants.COLUMN_EMAIL + " = '" + correspondentBankUser.getEmail() + "';";
+        String query = "SELECT * FROM " + SQLConstants.TABLE_USUARIOS + " WHERE " +
+                SQLConstants.COLUMN_EMAIL + " = '" + correspondentBankUser.getEmail() + "';";
         Cursor cursor = db.rawQuery(query, null);
         try {
             if (cursor.getCount() != 0) {
@@ -276,7 +282,6 @@ public class Datos {
                     transaccion.setCuentaSecundaria(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_CUENTASECUNDARIA)));
                     transaccion.setFecha(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_FECHA)));
                     transaccion.setHora(cursor.getString(cursor.getColumnIndex(SQLConstants.COLUMN_TRANSACCION_HORA)));
-
 
                     transacciones.add(transaccion);
                 }

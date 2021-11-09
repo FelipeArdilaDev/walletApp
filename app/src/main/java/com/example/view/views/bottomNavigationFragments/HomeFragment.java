@@ -18,6 +18,10 @@ import com.example.model.utils.Datos;
 import com.example.view.views.ViewAnimation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class HomeFragment extends Fragment {
 
     private TextView tvSaldo;
@@ -78,7 +82,7 @@ public class HomeFragment extends Fragment {
 
         backDrop.setVisibility(View.GONE);
 
-        fabAdd.setOnClickListener(v -> toggleFabMode(v));
+        fabAdd.setOnClickListener(this::toggleFabMode);
 
         backDrop.setOnClickListener(v -> toggleFabMode(fabAdd));
 
@@ -91,11 +95,18 @@ public class HomeFragment extends Fragment {
         tvName = vista.findViewById(R.id.tvUsuario);
         tvName.setText("" + correspondentBankUser.getName());
         tvSaldo = vista.findViewById(R.id.tvSaldoUsuario);
-        tvSaldo.setText("" + correspondentBankUser.getSaldo());
+        tvSaldo.setText(formatMoneda(String.valueOf(correspondentBankUser.getSaldo())));
         datos.close();
 
 
         return vista;
+    }
+
+    private String formatMoneda(String monto) {
+        DecimalFormat format = new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ITALIAN));
+        double d = 0.0;
+        d = Double.parseDouble(monto);
+        return "$ " + format.format(d);
     }
 
 

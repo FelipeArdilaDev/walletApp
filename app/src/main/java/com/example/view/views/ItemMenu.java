@@ -26,6 +26,10 @@ import com.example.view.views.bottomNavigationFragments.HomeFragment;
 import com.example.view.views.bottomNavigationFragments.ProfileFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 
 public class ItemMenu extends AppCompatActivity {
 
@@ -114,7 +118,7 @@ public class ItemMenu extends AppCompatActivity {
         tvName = findViewById(R.id.tvUsuario);
         tvName.setText("" + correspondentBankUser.getName());
         tvSaldo = findViewById(R.id.tvSaldoUsuario);
-        tvSaldo.setText("" + correspondentBankUser.getSaldo());
+        tvSaldo.setText(formatMoneda(String.valueOf(correspondentBankUser.getSaldo())));
         datos.close();
     }
 
@@ -155,6 +159,13 @@ public class ItemMenu extends AppCompatActivity {
             ViewAnimation.showOut(lytConsultarSaldo);
             backDrop.setVisibility(View.GONE);
         }
+    }
+
+    private String formatMoneda(String monto) {
+        DecimalFormat format = new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ITALIAN));
+        double d = 0.0;
+        d = Double.parseDouble(monto);
+        return "$ " + format.format(d);
     }
 
 

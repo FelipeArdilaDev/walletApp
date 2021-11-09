@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
 
 import com.example.bancoprueba.R;
-import com.example.view.views.Tools;
+import com.example.model.utils.Tools;
 import com.google.android.material.tabs.TabLayout;
 
 public class DashboardWallet extends AppCompatActivity {

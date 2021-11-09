@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+    <string name="ingresa_tus_datos_nuevamente">Ingresa tus datos nuevamente</string>
+    <string name="usuario_incorrecto">Usuario Incorrecto !</string>
+    <string name="volver">Volver</string>
 </resources>
