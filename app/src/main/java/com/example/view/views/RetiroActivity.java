@@ -41,7 +41,6 @@ public class RetiroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retiro);
-        getSupportActionBar().hide();
 
 
         timontoRetiro = findViewById(R.id.timontoRetiro);

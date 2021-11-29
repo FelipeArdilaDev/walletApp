@@ -28,7 +28,6 @@ public class RegisterNewBankActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_register_new_bank);
 
         id = findViewById(R.id.idRegister);

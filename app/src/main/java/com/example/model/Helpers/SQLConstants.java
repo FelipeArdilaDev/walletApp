@@ -1,7 +1,5 @@
 package com.example.model.Helpers;
 
-import android.content.Context;
-
 public class SQLConstants {
 
     //Usuarios Corresponsal
@@ -69,12 +67,12 @@ public class SQLConstants {
                     COLUMN_TRANSACCION_CUENTASECUNDARIA + " TEXT, " +
                     COLUMN_TRANSACCION_CUENTACORRESPONSAL + " TEXT " + ");";
 
-    public static final String SQL_TRANSACCION_DELETE =
-            "DROP TABLE " + RESULTADO_TRANSACCION;
-    public static final String[] BANK_COLUMN = {COLUMN_BANK_ID, COLUMN_BANK_SALDO, COLUMN_BANK_NUMBER_COUNT, COLUMN_BANK_PASSWORD};
+    public static final String SQL_TRANSACCION_DELETE = "DROP TABLE " + RESULTADO_TRANSACCION;
 
-    public SQLConstants(Context context) {
-    }
+    public static final String[] BANK_COLUMN = {
+
+            COLUMN_BANK_ID, COLUMN_BANK_SALDO, COLUMN_BANK_NUMBER_COUNT, COLUMN_BANK_PASSWORD};
+
 }
 
 

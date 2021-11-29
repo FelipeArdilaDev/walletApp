@@ -1,19 +1,25 @@
 package com.example.view.views;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import com.example.bancoprueba.R;
 import com.example.model.Helpers.DBHelRepositoryImpl;
@@ -33,13 +39,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     private LoginPresenter presenter;
     private ProgressBar progressBar;
     private Datos datos;
+    private LinearLayout menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_BancoPrueba);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
 
         try {
             Thread.sleep(1000);
@@ -51,11 +57,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         tiEmailAddress        = findViewById(R.id.tiEmailAddress);
         progressBar           = findViewById(R.id.progressBar);
         checkBox              = findViewById(R.id.checkBox);
+        menu                  = findViewById(R.id.menu);
 
         presenter             = new LoginPresenterImpl(this, new LoginInteractorImpl());
         dbHelRepositoryImpl   = new DBHelRepositoryImpl(this);
 
         findViewById(R.id.btnIniciarSecion).setOnClickListener(this);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideKeyboard(v);
+            }
+        });
     }
 
     @Override
@@ -109,27 +123,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
         presenter.validateCredentials(tiEmailAddress.getText().toString(),
                 tiPasswordLogin.getText().toString(), this);
-
     }
 
     @Override
     public void showProgress() {
-
         progressBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override
     public void hideProgress() {
-
         progressBar.setVisibility(View.GONE);
-
     }
 
     @Override
     public void setUserNameError() {
         showCustomDialog();
-
 
     }
 
@@ -183,6 +191,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+
+
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
 
 
     }

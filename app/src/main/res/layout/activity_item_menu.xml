@@ -8,21 +8,23 @@
     tools:context="com.example.view.views.ItemMenu">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="150dp"
         android:layout_marginHorizontal="18dp"
         android:layout_marginTop="18dp"
-        android:background="@color/custom"
+        android:background="@drawable/btn_rounded_accent"
+        android:backgroundTint="@color/custom"
         android:padding="18dp">
 
         <TextView
             android:id="@+id/tvBienvenido"
-            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="205dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="12dp"
             android:text="Hola"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,16 +33,15 @@
 
         <TextView
             android:id="@+id/tvUsuario"
-            android:layout_width="wrap_content"
+            android:gravity="end"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="end"
+            android:layout_marginEnd="12dp"
             android:text="USUARIO"
             android:textColor="@color/white"
             android:textSize="26sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.819"
             app:layout_constraintStart_toEndOf="@+id/tvSaldoUsuario"
             app:layout_constraintTop_toBottomOf="@+id/tvBienvenido" />
 
@@ -48,8 +49,8 @@
             android:id="@+id/availableBalanceTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="12dp"
             android:text="Saldo disponible"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,11 +61,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="12dp"
             android:text="$1.000.000"
             android:textColor="@color/white"
             android:textSize="26sp"
-            app:layout_constraintStart_toStartOf="@id/availableBalanceTitleTextView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/availableBalanceTitleTextView" />
 
 
@@ -75,7 +76,7 @@
         android:id="@+id/backDrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DF123C5E"
+        android:background="#DF0D4D80"
         android:clickable="true"
         android:fitsSystemWindows="true"
         tools:ignore="SpeakableTextPresentCheck" />

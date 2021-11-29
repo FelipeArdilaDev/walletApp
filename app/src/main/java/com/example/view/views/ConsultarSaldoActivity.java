@@ -28,7 +28,6 @@ public class ConsultarSaldoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultar_saldo);
-        getSupportActionBar().hide();
 
 
         bankCorresponsal = new CorrespondentBankUser();

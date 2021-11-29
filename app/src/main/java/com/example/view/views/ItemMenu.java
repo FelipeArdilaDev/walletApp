@@ -50,7 +50,6 @@ public class ItemMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_menu);
-        getSupportActionBar().hide();
 
         bnvMain = findViewById(R.id.bnvMain);
         bnvMain.add(new MeowBottomNavigation.Model(1, R.drawable.ic_history));
@@ -118,7 +117,7 @@ public class ItemMenu extends AppCompatActivity {
         tvName = findViewById(R.id.tvUsuario);
         tvName.setText("" + correspondentBankUser.getName());
         tvSaldo = findViewById(R.id.tvSaldoUsuario);
-        tvSaldo.setText(formatMoneda(String.valueOf(correspondentBankUser.getSaldo())));
+        tvSaldo.setText(datos.formatMoneda(String.valueOf(correspondentBankUser.getSaldo())));
         datos.close();
     }
 
@@ -160,14 +159,6 @@ public class ItemMenu extends AppCompatActivity {
             backDrop.setVisibility(View.GONE);
         }
     }
-
-    private String formatMoneda(String monto) {
-        DecimalFormat format = new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ITALIAN));
-        double d = 0.0;
-        d = Double.parseDouble(monto);
-        return "$ " + format.format(d);
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

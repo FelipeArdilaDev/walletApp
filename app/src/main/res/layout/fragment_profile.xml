@@ -111,6 +111,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/datosPersonales"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
                         android:gravity="center_vertical"

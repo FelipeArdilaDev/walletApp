@@ -1,11 +1,13 @@
 package com.example.model.utils;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.models.UserBankClient;
@@ -14,7 +16,10 @@ import com.example.model.Helpers.SQLConstants;
 import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 public class Datos {
@@ -24,6 +29,7 @@ public class Datos {
             Pattern.compile("^" +
                     ".{4,20}" +
                     "$");
+
     public Context context;
     public SQLiteDatabase db;
     public SQLiteOpenHelper sqLiteOpenHelper;
@@ -36,16 +42,23 @@ public class Datos {
 
     }
 
-    public static boolean checkEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
     public void open() {
         db = sqLiteOpenHelper.getWritableDatabase();
     }
 
     public void close() {
         sqLiteOpenHelper.close();
+    }
+
+    public String formatMoneda(String monto) {
+        DecimalFormat format = new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ITALIAN));
+        double d = 0.0;
+        d = Double.parseDouble(monto);
+        return "$ " + format.format(d);
+    }
+
+    public static boolean checkEmail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     public void insertUsuario(CorrespondentBankUser usuario) {

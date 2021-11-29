@@ -26,7 +26,6 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        getSupportActionBar().hide();
         data = new Datos(this);
 
 

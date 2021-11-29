@@ -38,7 +38,6 @@ public class DepositoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposito);
-        getSupportActionBar().hide();
 
         tiDocument = findViewById(R.id.tiDocumentDeposito);
         tiDepotiso = findViewById(R.id.tiDocumentoPersona);
