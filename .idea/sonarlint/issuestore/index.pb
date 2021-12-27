@@ -1,19 +1,11 @@
 
-~
-Napp/src/main/java/com/example/view/views/HistorialFragment/RetiroFragment.java,2\9\2994d17c5032fcb1c41dad40e527cd70c35fea93
-„
-Tapp/src/main/java/com/example/view/views/bottomNavigationFragments/HomeFragment.java,1\8\18b07181fcf77b6f9bbaf8adc56d92f11956853b
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-m
-=app/src/main/java/com/example/view/views/VoucherActivity.java,1\9\19d8735a682d53f62ec8b02330b7ed26908e57ec
-|
-Lapp/src/main/java/com/example/view/views/HistorialTransaccionesActivity.java,9\b\9beff92760ba6c06c865fedf5e52b43bff0f7c2b
-o
-?app/src/main/java/com/example/view/views/HistorialActivity.java,9\3\93b0e0b0d0db5f61d243bf364ce8d2eb85d3a658
 n
 >app/src/main/java/com/example/model/models/UserBankClient.java,6\7\67f4f32cbe3178ffa08afb9eab68b3390a51e62c
 d
 4app/src/main/java/com/example/model/utils/Tools.java,e\b\eb99ab2a29b9cf335caa43bd62650ebd5411d833
-}
-Mapp/src/main/java/com/example/view/views/HistorialTransaccionesAdaptador.java,e\8\e8cd02ca313acf05ba901cb53838a8f98421fe95
+l
+<app/src/main/java/com/example/model/LoginInteractorImpl.java,e\c\ec8ccc74fcc4c307a45cdc58102e453fb4f93956
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
