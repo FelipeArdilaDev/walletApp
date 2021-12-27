@@ -1,4 +1,4 @@
-package com.example.view.views;
+package com.example.view;
 
 public interface LoginView {
 

@@ -1,15 +1,12 @@
-package com.example.view.views;
+package com.example.view;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +18,10 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.bancoprueba.R;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.utils.Datos;
-import com.example.view.views.bottomNavigationFragments.HistoryFragment;
-import com.example.view.views.bottomNavigationFragments.HomeFragment;
-import com.example.view.views.bottomNavigationFragments.ProfileFragment;
+import com.example.view.bottomNavigationFragments.HistoryFragment;
+import com.example.view.bottomNavigationFragments.HomeFragment;
+import com.example.view.bottomNavigationFragments.ProfileFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 
 public class ItemMenu extends AppCompatActivity {

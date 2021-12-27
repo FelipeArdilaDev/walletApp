@@ -1,4 +1,4 @@
-package com.example.view.views.bottomNavigationFragments;
+package com.example.view.bottomNavigationFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bancoprueba.R;
 import com.example.model.models.ResultadoTransaccion;
 import com.example.model.utils.Datos;
-import com.example.view.views.HistorialTransaccionesAdaptador;
+import com.example.view.HistorialTransaccionesAdaptador;
 
 import java.util.ArrayList;
 

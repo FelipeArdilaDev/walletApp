@@ -1,4 +1,4 @@
-package com.example.view.views.bottomNavigationFragments;
+package com.example.view.bottomNavigationFragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.bancoprueba.R;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.utils.Datos;
-import com.example.view.views.ViewAnimation;
+import com.example.view.ViewAnimation;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DecimalFormat;

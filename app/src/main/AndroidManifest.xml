@@ -10,29 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BancoPrueba">
         <activity
-            android:name="com.example.view.views.PersonalData"
+            android:name="com.example.view.PersonalData"
             android:exported="true" />
         <activity
-            android:name="com.example.view.views.AccountActivity"
+            android:name="com.example.view.AccountActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.view.views.ItemMenu"
+            android:name="com.example.view.ItemMenu"
             android:exported="true" />
         <activity
-            android:name="com.example.view.views.HistorialActivity"
+            android:name="com.example.view.HistorialActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.view.views.HistorialTransaccionesActivity"
+            android:name="com.example.view.HistorialTransaccionesActivity"
             android:exported="true" />
-        <activity android:name="com.example.view.views.VoucherActivity" />
-        <activity android:name="com.example.view.views.DepositoActivity" />
-        <activity android:name="com.example.view.views.ConsultarSaldoActivity" />
-        <activity android:name="com.example.view.views.RetiroActivity" />
-        <activity android:name="com.example.view.views.RegisterNewBankActivity" />
-        <activity android:name="com.example.view.views.MainActivity" />
-        <activity android:name="com.example.view.views.RegistroActivity" />
+        <activity android:name="com.example.view.VoucherActivity" />
+        <activity android:name="com.example.view.DepositoActivity" />
+        <activity android:name="com.example.view.ConsultarSaldoActivity" />
+        <activity android:name="com.example.view.RetiroActivity" />
+        <activity android:name="com.example.view.RegisterNewBankActivity" />
+        <activity android:name="com.example.view.MainActivity" />
+        <activity android:name="com.example.view.RegistroActivity" />
         <activity
-            android:name="com.example.view.views.LoginActivity"
+            android:name="com.example.view.LoginActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.view.views;
+package com.example.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.model.models.CorrespondentBankUser;
-import com.example.model.models.UserBankClient;
 import com.example.model.utils.Datos;
 import com.example.bancoprueba.R;
 

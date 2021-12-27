@@ -1,4 +1,4 @@
-package com.example.view.views.bottomNavigationFragments;
+package com.example.view.bottomNavigationFragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.example.bancoprueba.R;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.models.UserBankClient;
 import com.example.model.utils.Datos;
-import com.example.view.views.PersonalData;
+import com.example.view.PersonalData;
 
 public class ProfileFragment extends Fragment {
 

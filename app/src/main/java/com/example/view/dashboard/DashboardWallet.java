@@ -1,4 +1,4 @@
-package com.example.view.views.dashboard;
+package com.example.view.dashboard;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;

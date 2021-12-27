@@ -1,4 +1,4 @@
-package com.example.view.views.HistorialFragment;
+package com.example.view.HistorialFragment;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.model.utils.Datos;
 import com.example.bancoprueba.R;
-import com.example.view.views.HistorialTransaccionesAdaptador;
+import com.example.view.HistorialTransaccionesAdaptador;
 import com.example.model.models.ResultadoTransaccion;
 
 import java.util.ArrayList;

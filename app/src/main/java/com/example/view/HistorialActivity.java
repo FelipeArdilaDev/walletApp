@@ -1,4 +1,4 @@
-package com.example.view.views;
+package com.example.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +10,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
-import com.example.view.views.HistorialFragment.DepositoFragment;
-import com.example.view.views.HistorialFragment.RetiroFragment;
+import com.example.view.HistorialFragment.DepositoFragment;
+import com.example.view.HistorialFragment.RetiroFragment;
 import com.example.bancoprueba.R;
 import com.google.android.material.tabs.TabLayout;
 

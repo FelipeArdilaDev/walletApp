@@ -1,4 +1,4 @@
-package com.example.view.views.HistorialFragment;
+package com.example.view.HistorialFragment;
 
 import android.os.Bundle;
 

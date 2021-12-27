@@ -3,9 +3,7 @@ package com.example.presenter;
 import android.content.Context;
 
 import com.example.model.LoginInteractor;
-import com.example.model.models.CorrespondentBankUser;
-import com.example.model.utils.Datos;
-import com.example.view.views.LoginView;
+import com.example.view.LoginView;
 
 public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.OnLoginFinishedListener {
 
