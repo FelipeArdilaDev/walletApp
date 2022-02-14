@@ -306,20 +306,6 @@ public class Datos extends AppCompatActivity {
         return transacciones;
 
     }
-
-     public boolean isAppInstalled(String packageName) {
-        PackageManager pm = getPackageManager();
-        boolean app_installed;
-        try {
-            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
-            app_installed = true;
-        } catch (PackageManager.NameNotFoundException e) {
-            app_installed = false;
-        }
-        return app_installed;
-    }
-
-
 }
 
 

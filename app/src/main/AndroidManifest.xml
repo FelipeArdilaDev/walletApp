@@ -16,7 +16,7 @@
             android:name="com.example.view.AccountActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.view.ItemMenu"
+            android:name="com.example.view.MenuActivity"
             android:exported="true" />
         <activity
             android:name="com.example.view.HistorialActivity"

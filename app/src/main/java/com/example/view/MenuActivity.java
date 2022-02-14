@@ -24,7 +24,7 @@ import com.example.view.bottomNavigationFragments.ProfileFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class ItemMenu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     private TextView tvSaldo;
     private TextView tvName;

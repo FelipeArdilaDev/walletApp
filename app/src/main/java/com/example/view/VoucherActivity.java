@@ -1,23 +1,25 @@
 package com.example.view;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.example.bancoprueba.R;
 import com.example.bancoprueba.databinding.ActivityVoucherBinding;
 import com.example.model.models.ResultadoTransaccion;
-import com.example.model.utils.Datos;
 
 public class VoucherActivity extends AppCompatActivity {
 
     private ActivityVoucherBinding binding;
-    Datos datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,7 @@ public class VoucherActivity extends AppCompatActivity {
 
         binding.btnEnviarWhatsapp.setOnClickListener(v -> {
 
-            boolean installed = datos.isAppInstalled("com.whatsapp");
+            boolean installed = isAppInstalled("com.whatsapp");
             if (installed) {
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
@@ -37,11 +39,10 @@ public class VoucherActivity extends AppCompatActivity {
                 startActivity(sendIntent);
             } else {
                 showCustomDialog();
-
             }
-
-
         });
+
+        binding.btnSalir.setOnClickListener(v -> startActivity(new Intent(this, MenuActivity.class)));
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -93,24 +94,18 @@ public class VoucherActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    public void salirMenu(){
-        startActivity(new Intent(this, MainActivity.class));
-    }
-
-
     public void showCustomDialog() {
-
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
-        dialog.setContentView(R.layout.dialog_warning);
-        dialog.setTitle("La aplicación no está instalada actualmente en su teléfono");
+        dialog.setContentView(R.layout.customized_dialog);
         dialog.setCancelable(true);
+        ((TextView) dialog.findViewById(R.id.title)).setText("App no instalada");
+        ((TextView) dialog.findViewById(R.id.content)).setText("Instala whatsapp para enviar tu comprobante");
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
         lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
 
         ((AppCompatButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), ((AppCompatButton) v).getText().toString()
@@ -120,8 +115,18 @@ public class VoucherActivity extends AppCompatActivity {
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
+    }
 
-
+    public boolean isAppInstalled(String packageName) {
+        PackageManager pm = getPackageManager();
+        boolean app_installed;
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed;
     }
 }
 

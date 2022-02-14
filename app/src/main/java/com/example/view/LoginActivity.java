@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     @Override
     public void navigateToHome() {
         String email = binding.tiEmailAddress.getText().toString();
-        Intent intento = new Intent(this, ItemMenu.class);
+        Intent intento = new Intent(this, MenuActivity.class);
         startActivity(intento);
         intento.putExtra("email", email);
 
@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
-        dialog.setContentView(R.layout.dialog_warning);
+        dialog.setContentView(R.layout.customized_dialog);
         dialog.setCancelable(true);
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();

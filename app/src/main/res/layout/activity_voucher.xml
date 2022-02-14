@@ -64,7 +64,6 @@
             android:id="@+id/btnEnviarWhatsapp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btnSalir"
             android:layout_centerInParent="true"
             android:layout_marginBottom="15dp"
             android:drawableEnd="@drawable/ic_baseline_send_24"
@@ -78,10 +77,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="25dp"
-            android:onClick="salirMenu"
             android:text="salir"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
 
     </RelativeLayout>
