@@ -69,7 +69,6 @@
             android:layout_marginBottom="15dp"
             android:drawableEnd="@drawable/ic_baseline_send_24"
             android:drawableTint="@color/white"
-            android:onClick="enviarWhatsapp"
             android:text="Enviar por Whatsapp"
             android:textColor="@color/white"/>
 

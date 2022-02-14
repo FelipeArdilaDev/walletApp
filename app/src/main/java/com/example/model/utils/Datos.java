@@ -1,13 +1,13 @@
 package com.example.model.utils;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.models.UserBankClient;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-public class Datos {
+public class Datos extends AppCompatActivity {
 
 
     public static final Pattern PASSWORD_PATTERN =
@@ -306,6 +306,20 @@ public class Datos {
         return transacciones;
 
     }
+
+     public boolean isAppInstalled(String packageName) {
+        PackageManager pm = getPackageManager();
+        boolean app_installed;
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        } catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed;
+    }
+
+
 }
 
 
