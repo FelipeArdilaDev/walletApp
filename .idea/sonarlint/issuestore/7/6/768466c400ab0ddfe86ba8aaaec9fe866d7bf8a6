@@ -1,0 +1,15 @@
+
+k	java:S116"VRename this field "parent_view" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(öŞ‡•
+p
+java:S1450"ZRemove the "parent_view" field and declare it as a local variable in the relevant methods.(öŞ‡•
+p
+java:S1450"URemove the "tvName" field and declare it as a local variable in the relevant methods.(˜Ñ†æıÿÿÿÿ
+l
+java:S1450"VRemove the "tvSaldo" field and declare it as a local variable in the relevant methods.(Å¥ßÈ
+>
+java:S1185-"(Remove this method to simply inherit it.(ßìê¯
+K
+java:S1854i"5Remove this useless assignment to local variable "d".(¶üÀö
+E
+java:S1068"/Remove this unused "parent_view" private field.(öŞ‡•
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(øÉã–

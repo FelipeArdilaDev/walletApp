@@ -1,0 +1,4 @@
+
+~
+java:S1450"\Remove the "customsDialog" field and declare it as a local variable in the relevant methods.(¿Ž¦óúÿÿÿÿ8îê¦Æï/
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òì Æùÿÿÿÿ8Ùí¿Æï/

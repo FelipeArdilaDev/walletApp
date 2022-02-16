@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.model.models.UserBankClient;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.utils.Datos;
-import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.Helpers.DBHelRepository;
 import com.example.bancoprueba.R;
 import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
@@ -32,7 +32,7 @@ public class RetiroActivity extends AppCompatActivity {
     TextInputEditText pinRetiro;
     TextInputEditText pinRetiroConfirm;
     Button retirarDinero;
-    DBHelRepositoryImpl dbHelRepositoryImpl;
+    DBHelRepository dbHelRepository;
     Datos datos;
     UserBankClient userBankClient;
     CorrespondentBankUser correspondentBankUser;
@@ -52,7 +52,7 @@ public class RetiroActivity extends AppCompatActivity {
         pinRetiroConfirm = findViewById(R.id.pinRetiroConfirm);
 
 
-        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
+        dbHelRepository = new DBHelRepository(this);
         datos = new Datos(this);
         userBankClient = new UserBankClient();
         correspondentBankUser = new CorrespondentBankUser();

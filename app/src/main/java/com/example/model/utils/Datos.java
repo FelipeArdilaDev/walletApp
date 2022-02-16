@@ -2,7 +2,6 @@ package com.example.model.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.models.UserBankClient;
-import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.Helpers.DBHelRepository;
 import com.example.model.Helpers.SQLConstants;
 import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
@@ -37,7 +36,7 @@ public class Datos extends AppCompatActivity {
 
     public Datos(Context context) {
         this.context = context;
-        sqLiteOpenHelper = new DBHelRepositoryImpl(context);
+        sqLiteOpenHelper = new DBHelRepository(context);
         db = sqLiteOpenHelper.getWritableDatabase();
 
     }

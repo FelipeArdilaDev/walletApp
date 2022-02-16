@@ -17,7 +17,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.bancoprueba.R;
 import com.example.bancoprueba.databinding.ActivityLoginBinding;
-import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.Helpers.DBHelRepository;
 import com.example.model.LoginInteractorImpl;
 import com.example.model.utils.Datos;
 import com.example.presenter.LoginPresenter;
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
 
         presenter = new LoginPresenterImpl(this, new LoginInteractorImpl());
-        DBHelRepositoryImpl dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
+        DBHelRepository dbHelRepository = new DBHelRepository(this);
 
         binding.menu.setOnClickListener(this::hideKeyboard);
 

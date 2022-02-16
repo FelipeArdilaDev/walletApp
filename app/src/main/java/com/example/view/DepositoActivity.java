@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.model.models.CorrespondentBankUser;
 import com.example.model.models.UserBankClient;
 import com.example.model.utils.Datos;
-import com.example.model.Helpers.DBHelRepositoryImpl;
+import com.example.model.Helpers.DBHelRepository;
 import com.example.bancoprueba.R;
 import com.example.model.models.ResultadoTransaccion;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,7 +27,7 @@ public class DepositoActivity extends AppCompatActivity {
     TextInputEditText tiDepotiso;
     TextInputEditText tiMontoDeposito;
     Button depositar;
-    DBHelRepositoryImpl dbHelRepositoryImpl;
+    DBHelRepository dbHelRepository;
     Datos datos;
     UserBankClient userBankClient;
     CorrespondentBankUser correspondentBankUser;
@@ -45,7 +45,7 @@ public class DepositoActivity extends AppCompatActivity {
 
         correspondentBankUser = new CorrespondentBankUser();
         userBankClient = new UserBankClient();
-        dbHelRepositoryImpl = new DBHelRepositoryImpl(this);
+        dbHelRepository = new DBHelRepository(this);
 
 
         depositar = findViewById(R.id.depositar);

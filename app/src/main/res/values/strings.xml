@@ -6,4 +6,6 @@
     <string name="ingresa_tus_datos_nuevamente">Ingresa tus datos nuevamente</string>
     <string name="usuario_incorrecto">Usuario Incorrecto !</string>
     <string name="volver">Volver</string>
+    <string name="app_not_install">App no instalada</string>
+    <string name="muchi_texto">Instala whatsapp para enviar tu comprobante</string>
 </resources>

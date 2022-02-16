@@ -1,12 +1,15 @@
 package com.example.view;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
+import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,11 +18,13 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.bancoprueba.R;
 import com.example.bancoprueba.databinding.ActivityVoucherBinding;
+import com.example.bancoprueba.databinding.CustomizedDialogBinding;
 import com.example.model.models.ResultadoTransaccion;
 
 public class VoucherActivity extends AppCompatActivity {
 
     private ActivityVoucherBinding binding;
+    private CustomizedDialogBinding customsDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,24 +102,24 @@ public class VoucherActivity extends AppCompatActivity {
     public void showCustomDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
-        dialog.setContentView(R.layout.customized_dialog);
-        dialog.setCancelable(true);
-        ((TextView) dialog.findViewById(R.id.title)).setText("App no instalada");
-        ((TextView) dialog.findViewById(R.id.content)).setText("Instala whatsapp para enviar tu comprobante");
 
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        this.customsDialog = CustomizedDialogBinding.inflate(getLayoutInflater());
+
+        LayoutParams lp = new LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.width = WRAP_CONTENT;
+        lp.height = WRAP_CONTENT;
 
-        ((AppCompatButton) dialog.findViewById(R.id.bt_close)).setOnClickListener(v -> {
+        dialog.setContentView(this.customsDialog.getRoot(), lp);
+        dialog.setCancelable(true);
+        customsDialog.title.setText(R.string.app_not_install);
+        customsDialog.content.setText(R.string.muchi_texto);
+        customsDialog.btClose.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), ((AppCompatButton) v).getText().toString()
                     + " Clicked", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
-
         dialog.show();
-        dialog.getWindow().setAttributes(lp);
     }
 
     public boolean isAppInstalled(String packageName) {

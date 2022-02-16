@@ -1,0 +1,53 @@
+
+U
+java:S1118/":Add a private constructor to hide the implicit public one.(ïÅ¼•ıÿÿÿÿ
+Z
+java:S18745"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ
+K
+java:S18746"0Remove this use of "getColor"; it is deprecated.(†¢Îùÿÿÿÿ
+Z
+java:S1874>"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ
+F
+java:S1874?"0Remove this use of "getColor"; it is deprecated.(ÿÛù€
+Z
+java:S1874G"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ
+Z
+java:S1874P"?Remove this use of "FLAG_TRANSLUCENT_STATUS"; it is deprecated.(¿™¡’ûÿÿÿÿ
+F
+java:S1874Q"0Remove this use of "getColor"; it is deprecated.(ÿÛù€
+X
+java:S1874X"=Remove this use of "getSystemUiVisibility"; it is deprecated.(”µÀûşÿÿÿÿ
+b
+java:S1874Y"GRemove this use of "SYSTEM_UI_FLAG_LIGHT_STATUS_BAR"; it is deprecated.(ñ¸ßïøÿÿÿÿ
+S
+java:S1874Z"=Remove this use of "setSystemUiVisibility"; it is deprecated.(¥ççÉ
+X
+java:S1874a"=Remove this use of "getSystemUiVisibility"; it is deprecated.(”µÀûşÿÿÿÿ
+b
+java:S1874b"GRemove this use of "SYSTEM_UI_FLAG_LIGHT_STATUS_BAR"; it is deprecated.(ñ¸ßïøÿÿÿÿ
+S
+java:S1874c"=Remove this use of "setSystemUiVisibility"; it is deprecated.(¥ççÉ
+_
+java:S5361‹"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ƒó¿†
+M
+java:S1874Í"6Remove this use of "setColorFilter"; it is deprecated.(ì®Æá
+M
+java:S1874Õ"6Remove this use of "setColorFilter"; it is deprecated.(ì®Æá
+M
+java:S1874İ"6Remove this use of "setColorFilter"; it is deprecated.(ì®Æá
+?	java:S108Ş")Either remove or fill this block of code.(”ı¾
+M
+java:S1874æ"6Remove this use of "setColorFilter"; it is deprecated.(ì®Æá
+?	java:S108ç")Either remove or fill this block of code.(”ı¾
+O
+java:S1874³"3Remove this use of "versionCode"; it is deprecated.(òğÚãùÿÿÿÿ
+J
+java:S1874Ğ".Remove this use of "SERIAL"; it is deprecated.(Ğî¹³ÿÿÿÿÿ
+?	java:S108Ô")Either remove or fill this block of code.(”ı¾
+G
+java:S1144é"0Remove this unused private "appendQuery" method.(Ú×‘Ê
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰¥¼—ÿÿÿÿÿ
+D
+java:S1604 "(Make this anonymous inner class a lambda(‚Ä®±üÿÿÿÿ
+t
+java:S1488‹"]Immediately return this expression instead of assigning it to the temporary variable "email".(ƒó¿†

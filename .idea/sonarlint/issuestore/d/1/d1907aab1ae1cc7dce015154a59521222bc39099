@@ -1,0 +1,39 @@
+
+j	java:S116"URename this field "tab_layout" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(â‘ëš
+r	java:S116"]Rename this field "nested_scroll_view" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”èÇª
+w
+java:S1450"aRemove the "nested_scroll_view" field and declare it as a local variable in the relevant methods.(”èÇª
+o
+java:S1450"YRemove the "tab_layout" field and declare it as a local variable in the relevant methods.(â‘ëš
+Q
+java:S1874!"6Remove this use of "setColorFilter"; it is deprecated.(«”®Âüÿÿÿÿ
+K
+java:S1874!"0Remove this use of "getColor"; it is deprecated.(«”®Âüÿÿÿÿ
+L
+java:S18743"6Remove this use of "setColorFilter"; it is deprecated.(¡ËÙú
+F
+java:S18743"0Remove this use of "getColor"; it is deprecated.(¡ËÙú
+L
+java:S18744"6Remove this use of "setColorFilter"; it is deprecated.(‡¢üœ
+F
+java:S18744"0Remove this use of "getColor"; it is deprecated.(‡¢üœ
+K
+java:S18745"6Remove this use of "setColorFilter"; it is deprecated.(é‡¿N
+E
+java:S18745"0Remove this use of "getColor"; it is deprecated.(é‡¿N
+Q
+java:S18746"6Remove this use of "setColorFilter"; it is deprecated.(ä«íûÿÿÿÿ
+K
+java:S18746"0Remove this use of "getColor"; it is deprecated.(ä«íûÿÿÿÿ
+—
+java:S1186D"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¦›Í
+L
+java:S1874;"6Remove this use of "setColorFilter"; it is deprecated.(ôŸÁ†
+F
+java:S1874;"0Remove this use of "getColor"; it is deprecated.(ôŸÁ†
+L
+java:S1874@"6Remove this use of "setColorFilter"; it is deprecated.(×Ğ²
+F
+java:S1874@"0Remove this use of "getColor"; it is deprecated.(×Ğ²
+E
+java:S1874M"0Remove this use of "getColor"; it is deprecated.(§ïşr

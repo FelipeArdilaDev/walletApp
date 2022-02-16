@@ -97,8 +97,6 @@ public class HomeFragment extends Fragment {
         tvSaldo = vista.findViewById(R.id.tvSaldoUsuario);
         tvSaldo.setText(formatMoneda(String.valueOf(correspondentBankUser.getSaldo())));
         datos.close();
-
-
         return vista;
     }
 

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelRepositoryImpl extends SQLiteOpenHelper {
+public class DBHelRepository extends SQLiteOpenHelper {
     public static final int DB_VERSION = 2;
 
     Context context;
-    public DBHelRepositoryImpl(Context context){
+    public DBHelRepository(Context context){
         super(context, SQLConstants.DB,null,DB_VERSION);
         this.context = context;
     }

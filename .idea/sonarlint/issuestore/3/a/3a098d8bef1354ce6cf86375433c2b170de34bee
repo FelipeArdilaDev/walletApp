@@ -1,0 +1,14 @@
+
+u
+java:S1450"_Remove the "bankCorresponsal" field and declare it as a local variable in the relevant methods.(¾©‚
+o
+java:S1450"TRemove the "datos" field and declare it as a local variable in the relevant methods.(œÂîûÿÿÿÿ
+t
+java:S1450"^Remove the "datosPersonales" field and declare it as a local variable in the relevant methods.(Á‘¤Ê
+n
+java:S1450"YRemove the "saldoDispo" field and declare it as a local variable in the relevant methods.(¾¼²|
+x
+java:S1450"]Remove the "userBankClient" field and declare it as a local variable in the relevant methods.(àÀªıÿÿÿÿ
+M
+java:S1068"2Remove this unused "userBankClient" private field.(àÀªıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(øÉã–

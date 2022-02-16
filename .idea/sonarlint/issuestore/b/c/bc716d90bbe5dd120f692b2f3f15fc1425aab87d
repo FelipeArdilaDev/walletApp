@@ -1,0 +1,16 @@
+
+3
+java:S2386H"Make this member "protected".(ş³ï™
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ï¬ô‡
+b
+java:S1192"LDefine a constant instead of duplicating this literal "DROP TABLE " 3 times.(ÿÅÜÀ
+d
+java:S1192"NDefine a constant instead of duplicating this literal "CREATE TABLE " 3 times.(Š‘íù
+d
+java:S1192"IDefine a constant instead of duplicating this literal " TEXT, " 12 times.(¥¡‘Áøÿÿÿÿ
+b
+java:S1192"GDefine a constant instead of duplicating this literal " TEXT " 3 times.(…ú‰şùÿÿÿÿ
+€
+java:S1192"eDefine a constant instead of duplicating this literal " INTEGER PRIMARY KEY AUTOINCREMENT, " 3 times.(øäÉöıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤ÒÄÈ
